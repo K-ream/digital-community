@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登录 · 数字移民互助共同体</title>
+<style>
+  :root {
+    --bg: #07090f; --bg2: #0d1120; --card: rgba(255,255,255,0.05);
+    --border: rgba(255,255,255,0.1); --blue: #4fc3f7; --green: #81c784;
+    --purple: #ce93d8; --orange: #ffb74d; --red: #ef5350;
+    --text: rgba(255,255,255,0.9); --text2: rgba(255,255,255,0.5);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(7,9,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo {
+    font-size: 18px; font-weight: 700; letter-spacing: 2px;
+    background: linear-gradient(135deg, #4fc3f7, #ce93d8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--text2); text-decoration: none; font-size: 14px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* BACKGROUND */
+  .bg-decor {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(79,195,247,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(206,147,216,0.05) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 80% 20%, rgba(129,199,132,0.04) 0%, transparent 60%);
+  }
+  .particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .particle {
+    position: absolute; border-radius: 50%;
+    animation: float linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+  }
+
+  /* MAIN CONTAINER */
+  .page-wrap {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 80px 24px 40px;
+    position: relative; z-index: 1;
+  }
+
+  .login-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 44px;
+    width: 100%; max-width: 440px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 80px rgba(79,195,247,0.04);
+    position: relative;
+  }
+  .login-card::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(79,195,247,0.4), transparent);
+  }
+
+  .login-icon { font-size: 44px; margin-bottom: 16px; text-align: center; }
+  .login-title {
+    font-size: 24px; font-weight: 700; text-align: center;
+    margin-bottom: 8px;
+  }
+  .login-subtitle { color: var(--text2); font-size: 14px; text-align: center; margin-bottom: 36px; }
+
+  .form-group { margin-bottom: 20px; }
+  .form-label {
+    display: block; font-size: 13px; color: var(--text2);
+    margin-bottom: 8px; font-weight: 500;
+  }
+  .form-input {
+    width: 100%; padding: 13px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text);
+    font-size: 15px; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+  .form-input:focus {
+    border-color: rgba(79,195,247,0.5);
+    box-shadow: 0 0 0 3px rgba(79,195,247,0.08);
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.25); }
+
+  /* VERIFICATION CODE ROW */
+  .code-row { display: flex; gap: 10px; }
+  .code-row .form-input { flex: 1; }
+  .send-btn {
+    padding: 13px 16px; white-space: nowrap;
+    background: linear-gradient(135deg, rgba(79,195,247,0.2), rgba(124,77,255,0.2));
+    border: 1px solid rgba(79,195,247,0.35);
+    border-radius: 10px; color: var(--blue);
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; font-family: inherit;
+    min-width: 110px;
+  }
+  .send-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(79,195,247,0.3), rgba(124,77,255,0.3));
+    box-shadow: 0 0 16px rgba(79,195,247,0.2);
+  }
+  .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .login-btn {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #4fc3f7, #7c4dff);
+    color: #fff; font-size: 16px; font-weight: 700;
+    border: none; border-radius: 12px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 1px;
+    font-family: inherit; margin-top: 8px;
+    box-shadow: 0 4px 24px rgba(79,195,247,0.25);
+  }
+  .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,195,247,0.4); }
+  .login-btn:active { transform: translateY(0); }
+
+  .msg-error {
+    color: var(--red); font-size: 13px; margin-top: 10px;
+    text-align: center; display: none;
+    padding: 10px; background: rgba(239,83,80,0.1);
+    border-radius: 8px; border: 1px solid rgba(239,83,80,0.2);
+  }
+  .msg-success {
+    color: var(--green); font-size: 13px; margin-top: 10px;
+    text-align: center; display: none;
+    padding: 10px; background: rgba(129,199,132,0.1);
+    border-radius: 8px; border: 1px solid rgba(129,199,132,0.2);
+  }
+
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+  .login-footer { text-align: center; font-size: 13px; color: var(--text2); }
+  .login-footer a { color: var(--blue); text-decoration: none; }
+  .login-footer a:hover { text-decoration: underline; }
+
+  /* MOCK EMAIL MODAL */
+  .email-modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75); z-index: 500;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .email-modal-overlay.show { display: flex; }
+  .email-modal {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 36px 32px;
+    width: 100%; max-width: 420px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .email-modal-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+  .email-modal-icon { font-size: 32px; }
+  .email-modal-title { font-size: 18px; font-weight: 700; }
+  .email-modal-subtitle { font-size: 12px; color: var(--orange); margin-top: 2px; }
+
+  .email-body {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+    margin-bottom: 20px;
+  }
+  .email-to { font-size: 12px; color: var(--text2); margin-bottom: 8px; }
+  .email-subject { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+  .email-text { font-size: 14px; color: var(--text2); line-height: 1.7; }
+  .code-display {
+    font-size: 36px; font-weight: 900; letter-spacing: 8px;
+    text-align: center; padding: 16px;
+    background: linear-gradient(135deg, var(--bg), var(--bg2));
+    border: 1px dashed rgba(79,195,247,0.4);
+    border-radius: 10px; margin: 16px 0;
+    background-clip: text; color: transparent;
+    background: linear-gradient(135deg, #4fc3f7, #ce93d8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .email-notice {
+    font-size: 12px; color: rgba(255,183,77,0.8);
+    background: rgba(255,183,77,0.08);
+    border: 1px solid rgba(255,183,77,0.2);
+    border-radius: 8px; padding: 10px 12px;
+    margin-bottom: 20px;
+  }
+  .email-close-btn {
+    width: 100%; padding: 12px;
+    background: linear-gradient(135deg, #4fc3f7, #7c4dff);
+    color: #fff; font-size: 14px; font-weight: 700;
+    border: none; border-radius: 10px; cursor: pointer;
+    font-family: inherit; transition: opacity 0.2s;
+  }
+  .email-close-btn:hover { opacity: 0.9; }
+
+  @media (max-width: 480px) {
+    nav { padding: 0 16px; }
+    .login-card { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-decor"></div>
+<div class="particles" id="particles"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">🌐 数字移民共同体</a>
+  <div class="nav-links">
+    <a href="index.html">首页</a>
+    <a href="apply.html">申请加入</a>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page-wrap">
+  <div class="login-card">
+    <div class="login-icon">🔑</div>
+    <div class="login-title">欢迎回来</div>
+    <div class="login-subtitle">通过邮箱验证码安全登录</div>
+
+    <div class="form-group">
+      <label class="form-label">邮箱地址</label>
+      <input class="form-input" type="email" id="emailInput" placeholder="your@email.com"
+        oninput="onEmailChange()" onkeydown="if(event.key==='Enter')sendCode()">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">验证码</label>
+      <div class="code-row">
+        <input class="form-input" type="text" id="codeInput" placeholder="输入6位验证码"
+          maxlength="6" onkeydown="if(event.key==='Enter')doLogin()">
+        <button class="send-btn" id="sendBtn" onclick="sendCode()">发送验证码</button>
+      </div>
+    </div>
+
+    <div class="msg-error" id="msgError"></div>
+    <div class="msg-success" id="msgSuccess"></div>
+
+    <button class="login-btn" onclick="doLogin()">登 录</button>
+
+    <div class="divider"></div>
+    <div class="login-footer">
+      还没有申请？<a href="apply.html">申请内测资格 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- MOCK EMAIL MODAL -->
+<div class="email-modal-overlay" id="emailModalOverlay">
+  <div class="email-modal">
+    <div class="email-modal-header">
+      <div class="email-modal-icon">📧</div>
+      <div>
+        <div class="email-modal-title">模拟邮件收件箱</div>
+        <div class="email-modal-subtitle">⚠️ 演示模式 · 真实环境将发送至您的邮箱</div>
+      </div>
+    </div>
+    <div class="email-body">
+      <div class="email-to">收件人：<span id="modalEmailTo" style="color:var(--blue)"></span></div>
+      <div class="email-subject">【数字移民共同体】您的登录验证码</div>
+      <div class="email-text">
+        您好，感谢使用数字移民互助共同体。<br>
+        您的本次登录验证码为：
+      </div>
+      <div class="code-display" id="modalCode">------</div>
+      <div class="email-text">验证码有效期 <strong style="color:var(--orange)">60秒</strong>，请勿泄露给他人。</div>
+    </div>
+    <div class="email-notice">
+      🔔 提示：这是一个演示界面，验证码仅存储在本地。真实上线后将通过邮件 API 发送到您的真实邮箱。
+    </div>
+    <button class="email-close-btn" onclick="closeEmailModal()">我知道了，去填写验证码</button>
+  </div>
+</div>
+
+<script>
+// ── Particles ──
+const pc = document.getElementById('particles');
+for (let i = 0; i < 20; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random() * 4 + 2;
+  p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;
+    animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s;
+    background:${['rgba(79,195,247,0.3)','rgba(206,147,216,0.3)','rgba(129,199,132,0.3)'][Math.floor(Math.random()*3)]};`;
+  pc.appendChild(p);
+}
+
+// ── Constants ──
+const STORAGE_KEY_APPS = 'dc_applications';
+const STORAGE_KEY_USERS = 'dc_users';
+const STORAGE_KEY_CURRENT = 'dc_current_user';
+
+let countdown = 0;
+let countdownTimer = null;
+
+function onEmailChange() {
+  if (countdown === 0) {
+    document.getElementById('sendBtn').disabled = false;
+  }
+}
+
+// ── Send verification code ──
+function sendCode() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email || !email.includes('@')) {
+    showError('请输入有效的邮箱地址');
+    return;
+  }
+  if (countdown > 0) return;
+
+  // Generate 6-char code: btoa(email + random), take first 6 alphanumeric chars
+  const raw = btoa(email + Math.random());
+  const code = raw.replace(/[^a-zA-Z0-9]/g, '').slice(0, 6).toUpperCase();
+  localStorage.setItem('dc_pending_code_' + email, code);
+  localStorage.setItem('dc_pending_code_ts_' + email, Date.now().toString());
+
+  // Show mock email modal
+  document.getElementById('modalEmailTo').textContent = email;
+  document.getElementById('modalCode').textContent = code;
+  document.getElementById('emailModalOverlay').classList.add('show');
+
+  // Start countdown
+  startCountdown();
+  clearMessages();
+}
+
+function closeEmailModal() {
+  document.getElementById('emailModalOverlay').classList.remove('show');
+  document.getElementById('codeInput').focus();
+}
+
+function startCountdown() {
+  countdown = 60;
+  updateSendBtn();
+  countdownTimer = setInterval(() => {
+    countdown--;
+    updateSendBtn();
+    if (countdown <= 0) {
+      clearInterval(countdownTimer);
+      countdown = 0;
+    }
+  }, 1000);
+}
+
+function updateSendBtn() {
+  const btn = document.getElementById('sendBtn');
+  if (countdown > 0) {
+    btn.disabled = true;
+    btn.textContent = `${countdown}s 后重发`;
+  } else {
+    btn.disabled = false;
+    btn.textContent = '发送验证码';
+  }
+}
+
+// ── Login ──
+function doLogin() {
+  const email = document.getElementById('emailInput').value.trim();
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
+
+  if (!email || !email.includes('@')) { showError('请输入有效的邮箱地址'); return; }
+  if (!code) { showError('请输入验证码'); return; }
+
+  const storedCode = localStorage.getItem('dc_pending_code_' + email);
+  const storedTs = parseInt(localStorage.getItem('dc_pending_code_ts_' + email) || '0');
+
+  if (!storedCode) { showError('请先发送验证码'); return; }
+  if (Date.now() - storedTs > 60000) { showError('验证码已过期，请重新发送'); return; }
+  if (code !== storedCode) { showError('验证码不正确，请检查后重试'); return; }
+
+  // Clean up code
+  localStorage.removeItem('dc_pending_code_' + email);
+  localStorage.removeItem('dc_pending_code_ts_' + email);
+
+  // Load or create user
+  let users = JSON.parse(localStorage.getItem(STORAGE_KEY_USERS) || '[]');
+  let user = users.find(u => u.email === email);
+
+  if (!user) {
+    // Check application record for name/status
+    const apps = JSON.parse(localStorage.getItem(STORAGE_KEY_APPS) || '[]');
+    const app = apps.find(a => a.email === email);
+    user = {
+      email,
+      name: app ? app.name : email.split('@')[0],
+      passwordHash: '',
+      loginTime: new Date().toLocaleString('zh-CN'),
+      firstLoginTime: new Date().toLocaleString('zh-CN'),
+      contributionScore: app ? Math.floor(Math.random() * 30 + 10) : 0,
+      status: app ? app.status : 'pending'
+    };
+    users.push(user);
+  } else {
+    // Update login time and sync status from applications
+    const apps = JSON.parse(localStorage.getItem(STORAGE_KEY_APPS) || '[]');
+    const app = apps.find(a => a.email === email);
+    user.loginTime = new Date().toLocaleString('zh-CN');
+    if (app) user.status = app.status;
+    if (!user.firstLoginTime) user.firstLoginTime = user.loginTime;
+  }
+
+  localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
+  localStorage.setItem(STORAGE_KEY_CURRENT, email);
+
+  showSuccess('登录成功，正在跳转…');
+  setTimeout(() => { window.location.href = 'profile.html'; }, 800);
+}
+
+function showError(msg) {
+  const el = document.getElementById('msgError');
+  el.textContent = msg; el.style.display = 'block';
+  document.getElementById('msgSuccess').style.display = 'none';
+}
+function showSuccess(msg) {
+  const el = document.getElementById('msgSuccess');
+  el.textContent = msg; el.style.display = 'block';
+  document.getElementById('msgError').style.display = 'none';
+}
+function clearMessages() {
+  document.getElementById('msgError').style.display = 'none';
+  document.getElementById('msgSuccess').style.display = 'none';
+}
+
+// If already logged in, redirect to profile
+if (localStorage.getItem(STORAGE_KEY_CURRENT)) {
+  window.location.href = 'profile.html';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的主页 · 数字移民互助共同体</title>
+<style>
+  :root {
+    --bg: #07090f; --bg2: #0d1120; --card: rgba(255,255,255,0.05);
+    --border: rgba(255,255,255,0.1); --blue: #4fc3f7; --green: #81c784;
+    --purple: #ce93d8; --orange: #ffb74d; --red: #ef5350;
+    --text: rgba(255,255,255,0.9); --text2: rgba(255,255,255,0.5);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(7,9,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo {
+    font-size: 18px; font-weight: 700; letter-spacing: 2px;
+    background: linear-gradient(135deg, #4fc3f7, #ce93d8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 20px; align-items: center; }
+  .nav-links a {
+    color: var(--text2); text-decoration: none; font-size: 14px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-user {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--text2);
+  }
+  .nav-email {
+    background: rgba(79,195,247,0.1); border: 1px solid rgba(79,195,247,0.2);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 13px; color: var(--blue);
+  }
+  .nav-logout {
+    padding: 5px 12px; border-radius: 6px;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text2); font-size: 12px; cursor: pointer;
+    transition: all 0.2s; font-family: inherit;
+  }
+  .nav-logout:hover { border-color: var(--red); color: var(--red); }
+
+  /* LAYOUT */
+  .page-content {
+    max-width: 1100px; margin: 0 auto;
+    padding: 88px 40px 60px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px;
+    position: relative; overflow: hidden;
+  }
+  .card-title {
+    font-size: 15px; font-weight: 700; margin-bottom: 20px;
+    color: var(--text2); letter-spacing: 0.5px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-title .icon { font-size: 16px; }
+
+  /* LEFT PANEL */
+  .left-panel { display: flex; flex-direction: column; gap: 20px; }
+
+  /* AVATAR CARD */
+  .avatar-card { text-align: center; }
+  .avatar-wrap {
+    position: relative; display: inline-block; margin-bottom: 16px;
+  }
+  .avatar {
+    width: 88px; height: 88px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 800; color: #fff;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  .avatar-ring {
+    position: absolute; inset: -4px; border-radius: 50%;
+    background: linear-gradient(135deg, #4fc3f7, #ce93d8, #81c784);
+    z-index: -1;
+  }
+  .user-name {
+    font-size: 20px; font-weight: 700; margin-bottom: 6px;
+  }
+  .user-email-display { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
+  .user-since { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+  /* LEVEL BADGE */
+  .level-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 13px; font-weight: 600;
+    margin-top: 12px;
+  }
+
+  /* RIGHT PANEL */
+  .right-panel { display: flex; flex-direction: column; gap: 20px; }
+
+  /* CONTRIBUTION DASHBOARD */
+  .contrib-card {}
+  .contrib-inner {
+    display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+  }
+  .circle-wrap {
+    position: relative; width: 120px; height: 120px; flex-shrink: 0;
+  }
+  .circle-svg { transform: rotate(-90deg); }
+  .circle-bg { fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 8; }
+  .circle-progress {
+    fill: none; stroke-width: 8; stroke-linecap: round;
+    stroke-dasharray: 283; stroke-dashoffset: 283;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .circle-center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .circle-score { font-size: 26px; font-weight: 900; }
+  .circle-label { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+  .contrib-info { flex: 1; min-width: 160px; }
+  .contrib-info h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .contrib-info p { color: var(--text2); font-size: 14px; line-height: 1.7; }
+  .level-steps {
+    display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;
+  }
+  .level-step {
+    padding: 4px 12px; border-radius: 20px; font-size: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text2); transition: all 0.2s;
+  }
+  .level-step.current {
+    border-color: currentColor;
+    font-weight: 700;
+  }
+
+  /* STATUS CARD */
+  .status-card {}
+  .status-content { display: flex; align-items: center; gap: 20px; }
+  .status-icon-big { font-size: 48px; }
+  .status-info { flex: 1; }
+  .status-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .status-info p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .status-badge-large {
+    display: inline-block; padding: 5px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 600; margin-bottom: 8px;
+  }
+  .s-pending { background: rgba(255,183,77,0.15); color: var(--orange); border: 1px solid rgba(255,183,77,0.3); }
+  .s-approved { background: rgba(129,199,132,0.15); color: var(--green); border: 1px solid rgba(129,199,132,0.3); }
+  .s-rejected { background: rgba(239,83,80,0.15); color: var(--red); border: 1px solid rgba(239,83,80,0.3); }
+
+  /* SECURITY CARD */
+  .security-rows { display: flex; flex-direction: column; gap: 0; }
+  .security-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .security-row:last-child { border-bottom: none; }
+  .security-row-left {}
+  .security-row-label { font-size: 12px; color: var(--text2); margin-bottom: 4px; }
+  .security-row-value { font-size: 14px; }
+  .sec-btn {
+    padding: 6px 14px; border-radius: 8px;
+    background: rgba(79,195,247,0.1); border: 1px solid rgba(79,195,247,0.25);
+    color: var(--blue); font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; font-family: inherit;
+    white-space: nowrap;
+  }
+  .sec-btn:hover { background: rgba(79,195,247,0.2); }
+
+  /* ADMIN VIEW BANNER */
+  .admin-banner {
+    background: linear-gradient(135deg, rgba(255,183,77,0.1), rgba(206,147,216,0.1));
+    border: 1px solid rgba(255,183,77,0.3);
+    border-radius: 12px; padding: 14px 20px;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 0;
+  }
+  .admin-banner-icon { font-size: 24px; }
+  .admin-banner-text { flex: 1; font-size: 14px; }
+  .admin-banner-text strong { color: var(--orange); }
+  .admin-back-btn {
+    padding: 7px 14px; border-radius: 8px;
+    background: rgba(255,183,77,0.15); border: 1px solid rgba(255,183,77,0.3);
+    color: var(--orange); font-size: 12px; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .admin-back-btn:hover { background: rgba(255,183,77,0.25); }
+
+  /* MODALS */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75); z-index: 400;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 36px 32px;
+    width: 100%; max-width: 420px;
+    position: relative;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .modal h3 { font-size: 20px; font-weight: 700; margin-bottom: 24px; }
+  .modal-close {
+    position: absolute; top: 18px; right: 20px;
+    background: transparent; border: none; color: var(--text2);
+    font-size: 20px; cursor: pointer;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .modal-input {
+    width: 100%; padding: 12px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text);
+    font-size: 14px; outline: none;
+    transition: border-color 0.2s; font-family: inherit;
+    margin-bottom: 14px;
+  }
+  .modal-input:focus { border-color: rgba(79,195,247,0.5); }
+  .modal-input::placeholder { color: rgba(255,255,255,0.25); }
+  .modal-label { font-size: 13px; color: var(--text2); margin-bottom: 6px; display: block; }
+
+  .modal-btn-primary {
+    width: 100%; padding: 12px;
+    background: linear-gradient(135deg, #4fc3f7, #7c4dff);
+    color: #fff; font-size: 14px; font-weight: 700;
+    border: none; border-radius: 10px; cursor: pointer;
+    margin-top: 4px; font-family: inherit;
+    transition: opacity 0.2s;
+  }
+  .modal-btn-primary:hover { opacity: 0.9; }
+  .modal-error { color: var(--red); font-size: 13px; margin-top: 8px; text-align: center; display: none; }
+  .modal-success { color: var(--green); font-size: 13px; margin-top: 8px; text-align: center; display: none; }
+
+  /* BG */
+  .bg-decor {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(79,195,247,0.05) 0%, transparent 70%);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .nav-links { gap: 12px; }
+    .nav-email { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .page-content { grid-template-columns: 1fr; padding: 76px 16px 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-decor"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">🌐 数字移民共同体</a>
+  <div class="nav-links">
+    <a href="index.html">首页</a>
+    <a href="apply.html">申请加入</a>
+    <div class="nav-user">
+      <span class="nav-email" id="navEmail">加载中…</span>
+      <button class="nav-logout" onclick="doLogout()">退出</button>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page-content" id="pageContent" style="display:none">
+
+  <!-- Admin banner (shown when viewing as admin) -->
+  <div id="adminBanner" style="display:none; grid-column:1/-1">
+    <div class="admin-banner">
+      <div class="admin-banner-icon">🔍</div>
+      <div class="admin-banner-text">
+        <strong>管理员视角</strong> — 您正在查看用户 <strong id="adminViewEmail"></strong> 的个人主页
+      </div>
+      <a href="admin.html" class="admin-back-btn">← 返回后台</a>
+    </div>
+  </div>
+
+  <!-- LEFT: Profile summary -->
+  <div class="left-panel">
+    <!-- Avatar + name card -->
+    <div class="card avatar-card">
+      <div class="avatar-wrap">
+        <div class="avatar" id="userAvatar">?</div>
+        <div class="avatar-ring"></div>
+      </div>
+      <div class="user-name" id="userName">-</div>
+      <div class="user-email-display" id="userEmailDisplay">-</div>
+      <div class="user-since" id="userSince">-</div>
+      <div>
+        <span class="level-badge" id="levelBadge"></span>
+      </div>
+    </div>
+
+    <!-- Quick actions -->
+    <div class="card" style="padding:20px;">
+      <div class="card-title"><span class="icon">⚡</span>快速操作</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button class="sec-btn" style="text-align:left;width:100%;padding:10px 14px;font-size:13px;" onclick="openNicknameModal()">
+          ✏️ 修改昵称
+        </button>
+        <button class="sec-btn" style="text-align:left;width:100%;padding:10px 14px;font-size:13px;" onclick="openPasswordModal()">
+          🔐 修改密码
+        </button>
+        <a href="apply.html" style="text-align:left;width:100%;padding:10px 14px;font-size:13px;display:block;border-radius:8px;background:rgba(129,199,132,0.1);border:1px solid rgba(129,199,132,0.25);color:var(--green);font-weight:600;text-decoration:none;">
+          📋 查看申请状态
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right-panel">
+
+    <!-- Contribution Dashboard -->
+    <div class="card contrib-card">
+      <div class="card-title"><span class="icon">🏆</span>贡献仪表盘</div>
+      <div class="contrib-inner">
+        <div class="circle-wrap">
+          <svg class="circle-svg" width="120" height="120" viewBox="0 0 100 100">
+            <circle class="circle-bg" cx="50" cy="50" r="45"/>
+            <circle class="circle-progress" id="circleProgress" cx="50" cy="50" r="45"
+              stroke="url(#scoreGrad)"/>
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4fc3f7"/>
+                <stop offset="100%" stop-color="#ce93d8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="circle-center">
+            <div class="circle-score" id="circleScore" style="color:var(--blue)">0</div>
+            <div class="circle-label">贡献积分</div>
+          </div>
+        </div>
+        <div class="contrib-info">
+          <h3 id="levelName">观察者</h3>
+          <p id="levelDesc">继续贡献，提升你在共同体中的节点等级，获得更多资源优先权。</p>
+          <div class="level-steps" id="levelSteps"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Application Status -->
+    <div class="card status-card">
+      <div class="card-title"><span class="icon">📋</span>申请状态</div>
+      <div class="status-content">
+        <div class="status-icon-big" id="statusIconBig">⏳</div>
+        <div class="status-info">
+          <div class="status-badge-large" id="statusBadge">-</div>
+          <h3 id="statusTitle">-</h3>
+          <p id="statusDesc">-</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Security -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🔒</span>账户安全</div>
+      <div class="security-rows">
+        <div class="security-row">
+          <div class="security-row-left">
+            <div class="security-row-label">登录邮箱</div>
+            <div class="security-row-value" id="secEmail">-</div>
+          </div>
+        </div>
+        <div class="security-row">
+          <div class="security-row-left">
+            <div class="security-row-label">上次登录时间</div>
+            <div class="security-row-value" id="secLastLogin">-</div>
+          </div>
+        </div>
+        <div class="security-row">
+          <div class="security-row-left">
+            <div class="security-row-label">昵称</div>
+            <div class="security-row-value" id="secNickname">-</div>
+          </div>
+          <button class="sec-btn" onclick="openNicknameModal()">修改昵称</button>
+        </div>
+        <div class="security-row">
+          <div class="security-row-left">
+            <div class="security-row-label">登录密码</div>
+            <div class="security-row-value" id="secPwdStatus">未设置</div>
+          </div>
+          <button class="sec-btn" onclick="openPasswordModal()">修改密码</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NICKNAME MODAL -->
+<div class="modal-overlay" id="nicknameModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('nicknameModal')">✕</button>
+    <h3>✏️ 修改昵称</h3>
+    <label class="modal-label">新昵称</label>
+    <input class="modal-input" type="text" id="newNicknameInput" placeholder="输入你的新昵称" maxlength="20">
+    <button class="modal-btn-primary" onclick="saveNickname()">保存昵称</button>
+    <div class="modal-error" id="nicknameError"></div>
+    <div class="modal-success" id="nicknameSuccess"></div>
+  </div>
+</div>
+
+<!-- PASSWORD MODAL -->
+<div class="modal-overlay" id="passwordModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('passwordModal')">✕</button>
+    <h3>🔐 修改密码</h3>
+    <div id="oldPwdGroup">
+      <label class="modal-label">当前密码（如已设置）</label>
+      <input class="modal-input" type="password" id="oldPwdInput" placeholder="留空表示未设置过密码">
+    </div>
+    <label class="modal-label">新密码</label>
+    <input class="modal-input" type="password" id="newPwdInput" placeholder="至少6位字符" minlength="6">
+    <label class="modal-label">确认新密码</label>
+    <input class="modal-input" type="password" id="confirmPwdInput" placeholder="再次输入新密码">
+    <button class="modal-btn-primary" onclick="savePassword()">保存密码</button>
+    <div class="modal-error" id="pwdError"></div>
+    <div class="modal-success" id="pwdSuccess"></div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY_USERS = 'dc_users';
+const STORAGE_KEY_CURRENT = 'dc_current_user';
+const STORAGE_KEY_APPS = 'dc_applications';
+
+// Level definitions
+const LEVELS = [
+  { name: '观察者', icon: '👁️', min: 0,   max: 29,  color: 'rgba(255,255,255,0.5)', border: 'rgba(255,255,255,0.15)', desc: '刚刚加入共同体，开始了解和贡献。' },
+  { name: '移民',   icon: '✈️', min: 30,  max: 99,  color: '#4fc3f7', border: 'rgba(79,195,247,0.4)',   desc: '已开始贡献，正在建立自己的节点权重。' },
+  { name: '贡献者', icon: '⭐', min: 100, max: 299, color: '#ce93d8', border: 'rgba(206,147,216,0.4)', desc: '积极贡献中，在共同体中具有一定的资源分配权。' },
+  { name: '核心节点',icon: '💎', min: 300, max: Infinity, color: '#ffd54f', border: 'rgba(255,213,79,0.5)', desc: '高度贡献节点，享有最优先的资源获取权和完整投票权。' },
+];
+
+function getLevel(score) {
+  return LEVELS.find(l => score >= l.min && score <= l.max) || LEVELS[0];
+}
+
+// Status info
+const STATUS_INFO = {
+  pending:  { icon: '⏳', badge: '审核中', bclass: 's-pending',  title: '申请正在审核中', desc: '您的内测申请正在审核，通常需要 3-5 个工作日，请耐心等待。审核通过后您将收到通知。' },
+  approved: { icon: '✅', badge: '已通过', bclass: 's-approved', title: '恭喜！申请已通过', desc: '您的内测申请已批准通过，现在可以开始使用共同体的全部功能，开始贡献之旅！' },
+  rejected: { icon: '❌', badge: '未通过', bclass: 's-rejected', title: '申请暂未通过', desc: '很遗憾，您的申请暂时未能通过审核。您可以重新提交申请，补充更多关于贡献意愿的信息。' },
+  none:     { icon: '📝', badge: '未申请', bclass: 's-pending',  title: '尚未提交申请', desc: '您还未提交内测申请。点击下方按钮提交申请，加入数字移民互助共同体！' },
+};
+
+// ── Utility ──
+function simpleHash(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) { h = ((h << 5) - h) + str.charCodeAt(i); h |= 0; }
+  return Math.abs(h).toString(16);
+}
+
+function getAvatarColor(name) {
+  const colors = [
+    ['#4fc3f7','#0277bd'], ['#ce93d8','#6a1b9a'], ['#81c784','#2e7d32'],
+    ['#ffb74d','#e65100'], ['#f48fb1','#880e4f'], ['#80cbc4','#004d40'],
+  ];
+  const idx = name.charCodeAt(0) % colors.length;
+  return colors[idx];
+}
+
+function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_KEY_USERS) || '[]'); }
+function saveUsers(users) { localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users)); }
+function getCurrentEmail() { return localStorage.getItem(STORAGE_KEY_CURRENT); }
+
+// ── Main render ──
+function renderProfile(email) {
+  // Sync status from applications
+  const apps = JSON.parse(localStorage.getItem(STORAGE_KEY_APPS) || '[]');
+  const app = apps.find(a => a.email === email);
+  let users = getUsers();
+  let user = users.find(u => u.email === email);
+
+  if (!user) {
+    // Create minimal user record for admin view
+    user = {
+      email, name: email.split('@')[0],
+      passwordHash: '', loginTime: '-',
+      firstLoginTime: '-', contributionScore: 0,
+      status: app ? app.status : 'none'
+    };
+    users.push(user);
+    saveUsers(users);
+  }
+
+  if (app) user.status = app.status;
+
+  // NAV
+  document.getElementById('navEmail').textContent = email;
+
+  // AVATAR
+  const initial = (user.name || email)[0].toUpperCase();
+  const [c1, c2] = getAvatarColor(user.name || email);
+  const avatar = document.getElementById('userAvatar');
+  avatar.textContent = initial;
+  avatar.style.background = `linear-gradient(135deg, ${c1}, ${c2})`;
+
+  // Name / email / since
+  document.getElementById('userName').textContent = user.name || email.split('@')[0];
+  document.getElementById('userEmailDisplay').textContent = email;
+  document.getElementById('userSince').textContent = user.firstLoginTime ? '首次登录：' + user.firstLoginTime : '';
+
+  // Level badge
+  const score = user.contributionScore || 0;
+  const level = getLevel(score);
+  const lb = document.getElementById('levelBadge');
+  lb.textContent = level.icon + ' ' + level.name;
+  lb.style.background = level.border.replace('0.4','0.12').replace('0.5','0.12').replace('0.15','0.06');
+  lb.style.border = '1px solid ' + level.border;
+  lb.style.color = level.color;
+
+  // CIRCLE PROGRESS
+  const maxScore = 500;
+  const pct = Math.min(score / maxScore, 1);
+  const circumference = 2 * Math.PI * 45;
+  const offset = circumference * (1 - pct);
+  document.getElementById('circleScore').textContent = score;
+  document.getElementById('circleScore').style.color = level.color;
+  setTimeout(() => {
+    document.getElementById('circleProgress').style.strokeDashoffset = offset;
+  }, 200);
+
+  // Level name & desc
+  document.getElementById('levelName').textContent = level.icon + ' ' + level.name;
+  document.getElementById('levelDesc').textContent = level.desc;
+
+  // Level steps
+  const steps = document.getElementById('levelSteps');
+  steps.innerHTML = LEVELS.map(l => `
+    <span class="level-step${l.name === level.name ? ' current' : ''}"
+      style="${l.name === level.name ? 'color:'+l.color+';border-color:'+l.border : ''}">
+      ${l.icon} ${l.name}
+    </span>`).join('');
+
+  // Status card
+  const statusKey = user.status || (app ? app.status : 'none');
+  const si = STATUS_INFO[statusKey] || STATUS_INFO['none'];
+  document.getElementById('statusIconBig').textContent = si.icon;
+  const badgeEl = document.getElementById('statusBadge');
+  badgeEl.textContent = si.badge;
+  badgeEl.className = 'status-badge-large ' + si.bclass;
+  document.getElementById('statusTitle').textContent = si.title;
+  document.getElementById('statusDesc').textContent = si.desc;
+
+  // Security row
+  document.getElementById('secEmail').textContent = email;
+  document.getElementById('secLastLogin').textContent = user.loginTime || '未知';
+  document.getElementById('secNickname').textContent = user.name || '-';
+  document.getElementById('secPwdStatus').textContent = user.passwordHash ? '已设置 ✓' : '未设置';
+
+  document.getElementById('pageContent').style.display = '';
+}
+
+// ── Nickname Modal ──
+function openNicknameModal() {
+  const email = getViewingEmail();
+  const users = getUsers();
+  const user = users.find(u => u.email === email);
+  document.getElementById('newNicknameInput').value = user ? user.name : '';
+  document.getElementById('nicknameError').style.display = 'none';
+  document.getElementById('nicknameSuccess').style.display = 'none';
+  document.getElementById('nicknameModal').classList.add('show');
+}
+
+function saveNickname() {
+  const name = document.getElementById('newNicknameInput').value.trim();
+  if (!name) { showModalMsg('nicknameError', '昵称不能为空'); return; }
+  if (name.length > 20) { showModalMsg('nicknameError', '昵称不超过20个字符'); return; }
+
+  const email = getViewingEmail();
+  const users = getUsers();
+  const idx = users.findIndex(u => u.email === email);
+  if (idx >= 0) {
+    users[idx].name = name;
+    saveUsers(users);
+    showModalMsg('nicknameSuccess', '昵称已更新！');
+    setTimeout(() => { closeModal('nicknameModal'); renderProfile(email); }, 800);
+  }
+}
+
+// ── Password Modal ──
+function openPasswordModal() {
+  document.getElementById('oldPwdInput').value = '';
+  document.getElementById('newPwdInput').value = '';
+  document.getElementById('confirmPwdInput').value = '';
+  document.getElementById('pwdError').style.display = 'none';
+  document.getElementById('pwdSuccess').style.display = 'none';
+  document.getElementById('passwordModal').classList.add('show');
+}
+
+function savePassword() {
+  const email = getViewingEmail();
+  const users = getUsers();
+  const idx = users.findIndex(u => u.email === email);
+  if (idx < 0) return;
+
+  const user = users[idx];
+  const oldPwd = document.getElementById('oldPwdInput').value;
+  const newPwd = document.getElementById('newPwdInput').value;
+  const confirm = document.getElementById('confirmPwdInput').value;
+
+  // Verify old password if set
+  if (user.passwordHash) {
+    if (!oldPwd) { showModalMsg('pwdError', '请输入当前密码'); return; }
+    if (simpleHash(oldPwd) !== user.passwordHash) { showModalMsg('pwdError', '当前密码不正确'); return; }
+  }
+
+  if (!newPwd || newPwd.length < 6) { showModalMsg('pwdError', '新密码至少需要6位字符'); return; }
+  if (newPwd !== confirm) { showModalMsg('pwdError', '两次输入的密码不一致'); return; }
+
+  users[idx].passwordHash = simpleHash(newPwd);
+  saveUsers(users);
+  showModalMsg('pwdSuccess', '密码已成功更新！');
+  setTimeout(() => { closeModal('passwordModal'); renderProfile(email); }, 900);
+}
+
+function showModalMsg(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+}
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('show'); });
+});
+
+// ── Logout ──
+function doLogout() {
+  localStorage.removeItem(STORAGE_KEY_CURRENT);
+  window.location.href = 'login.html';
+}
+
+// ── Determine viewing email ──
+function getViewingEmail() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('email') || getCurrentEmail();
+}
+
+// ── Init ──
+(function init() {
+  const params = new URLSearchParams(window.location.search);
+  const queryEmail = params.get('email');
+  const currentUser = getCurrentEmail();
+
+  if (queryEmail) {
+    // Admin view mode
+    document.getElementById('adminBanner').style.display = 'block';
+    document.getElementById('adminViewEmail').textContent = queryEmail;
+    // Disable edit buttons in admin view
+    renderProfile(queryEmail);
+  } else {
+    if (!currentUser) {
+      window.location.href = 'login.html';
+      return;
+    }
+    renderProfile(currentUser);
+  }
+})();
+</script>
+</body>
+</html>
