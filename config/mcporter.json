@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "gongfeng": {
+      "url": "https://git.woa.com/api/mcp/mcp",
+      "headers": {
+        "OAUTH-TOKEN": "09c2e75540c777833776a9a06724c49f",
+        "X-USERNAME": "v_ruilinku"
+      }
+    },
+    "isearch": {
+      "url": "https://prod.mcp.it.woa.com/app_iwiki_mcp/mcp3",
+      "headers": {
+        "Authorization": "Bearer tai_pat_xLfQRXOcLOEWI-9GwvXPnsoKcuW8Nta83XQlKdGsIWM.PG2tWTwXHXk73sIES-AowzGK-Jx_211gSyhWR3BZEAw"
+      }
+    },
+    "iwiki": {
+      "url": "https://prod.mcp.it.woa.com/app_iwiki_mcp/mcp3",
+      "headers": {
+        "Authorization": "Bearer tai_pat_xLfQRXOcLOEWI-9GwvXPnsoKcuW8Nta83XQlKdGsIWM.PG2tWTwXHXk73sIES-AowzGK-Jx_211gSyhWR3BZEAw"
+      }
+    },
+    "tapd": {
+      "url": "http://mcp-idc.tapd.woa.com/mcp/",
+      "headers": {
+        "OAUTH-TOKEN": "09c2e75540c777833776a9a06724c49f",
+        "X-USERNAME": "v_ruilinku",
+        "X-Tools-Set": "lookup_tapd_tool,lookup_tool_param_schema,proxy_execute_tool"
+      }
+    }
+  }
+}

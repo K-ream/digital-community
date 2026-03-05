@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数字移民互助共同体 — 网状结构图</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e1a; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+  #chart { width: 100vw; height: 100vh; }
+  #legend {
+    position: fixed; top: 20px; left: 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 16px 20px; color: #fff;
+  }
+  #legend h3 { font-size: 14px; margin-bottom: 10px; color: #7ec8e3; }
+  .legend-item { display: flex; align-items: center; margin-bottom: 6px; font-size: 12px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
+  #title {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    color: #fff; font-size: 20px; font-weight: bold;
+    text-shadow: 0 0 20px rgba(126,200,227,0.8);
+    letter-spacing: 2px;
+  }
+  #subtitle {
+    position: fixed; top: 52px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+<div id="title">🌐 数字移民互助共同体</div>
+<div id="subtitle">贡献越多 · 连接越广 · 节点越亮</div>
+<div id="chart"></div>
+<div id="legend">
+  <h3>图例</h3>
+  <div class="legend-item"><div class="dot" style="background:#f5a623;width:16px;height:16px;"></div>社区核心</div>
+  <div class="legend-item"><div class="dot" style="background:#4fc3f7;"></div>数字移民</div>
+  <div class="legend-item"><div class="dot" style="background:#81c784;"></div>基础资源项目</div>
+  <div class="legend-item"><div class="dot" style="background:#ce93d8;"></div>互助好事项目</div>
+  <div class="legend-item"><div class="dot" style="background:#ff8a65;"></div>高贡献移民</div>
+  <div class="legend-item" style="margin-top:8px;color:rgba(255,255,255,0.4);font-size:11px;">节点大小 = 贡献值</div>
+</div>
+
+<script>
+const chart = echarts.init(document.getElementById('chart'));
+
+const nodes = [
+  // 核心
+  { id: 'core', name: '社区核心\n资产池', category: 0, symbolSize: 70, value: 100,
+    label: { show: true, fontSize: 13, fontWeight: 'bold' } },
+
+  // 高贡献数字移民（橙红色，大节点）
+  { id: 'm1', name: '移民·陈磊\n贡献★★★★★', category: 4, symbolSize: 48, value: 95 },
+  { id: 'm2', name: '移民·林晓\n贡献★★★★★', category: 4, symbolSize: 46, value: 90 },
+  { id: 'm3', name: '移民·王浩\n贡献★★★★☆', category: 4, symbolSize: 40, value: 78 },
+
+  // 普通数字移民（蓝色）
+  { id: 'm4', name: '移民·张三\n贡献★★★', category: 1, symbolSize: 30, value: 55 },
+  { id: 'm5', name: '移民·李四\n贡献★★★', category: 1, symbolSize: 28, value: 50 },
+  { id: 'm6', name: '移民·赵五\n贡献★★☆', category: 1, symbolSize: 24, value: 35 },
+  { id: 'm7', name: '移民·钱六\n贡献★★', category: 1, symbolSize: 22, value: 28 },
+  { id: 'm8', name: '移民·孙七\n贡献★', category: 1, symbolSize: 18, value: 15 },
+  { id: 'm9', name: '移民·周八\n贡献★', category: 1, symbolSize: 18, value: 12 },
+
+  // 基础资源项目（绿色）
+  { id: 'p1', name: '💧 净水项目\n云南山区', category: 2, symbolSize: 38, value: 80 },
+  { id: 'p2', name: '⚡ 光伏电力\n西部农村', category: 2, symbolSize: 36, value: 75 },
+  { id: 'p3', name: '🌾 有机农场\n东北粮仓', category: 2, symbolSize: 34, value: 70 },
+  { id: 'p4', name: '🌬️ 空气净化\n城市社区', category: 2, symbolSize: 30, value: 60 },
+  { id: 'p5', name: '♻️ 环境修复\n海洋清洁', category: 2, symbolSize: 28, value: 55 },
+
+  // 互助项目（紫色）
+  { id: 'h1', name: '🏥 医疗互助\n大病众筹', category: 3, symbolSize: 32, value: 65 },
+  { id: 'h2', name: '📚 教育助学\n山区孩子', category: 3, symbolSize: 30, value: 60 },
+  { id: 'h3', name: '🏠 住房互助\n临时庇护', category: 3, symbolSize: 26, value: 45 },
+  { id: 'h4', name: '👴 老人关怀\n空巢探访', category: 3, symbolSize: 24, value: 40 },
+];
+
+const links = [
+  // 核心 ↔ 基础项目
+  { source: 'core', target: 'p1', value: 5 },
+  { source: 'core', target: 'p2', value: 5 },
+  { source: 'core', target: 'p3', value: 5 },
+  { source: 'core', target: 'p4', value: 4 },
+  { source: 'core', target: 'p5', value: 3 },
+  // 核心 ↔ 互助项目
+  { source: 'core', target: 'h1', value: 4 },
+  { source: 'core', target: 'h2', value: 4 },
+  { source: 'core', target: 'h3', value: 3 },
+  { source: 'core', target: 'h4', value: 3 },
+
+  // 高贡献移民 → 核心
+  { source: 'm1', target: 'core', value: 8 },
+  { source: 'm2', target: 'core', value: 7 },
+  { source: 'm3', target: 'core', value: 6 },
+
+  // 普通移民 → 核心
+  { source: 'm4', target: 'core', value: 4 },
+  { source: 'm5', target: 'core', value: 3 },
+  { source: 'm6', target: 'core', value: 2 },
+  { source: 'm7', target: 'core', value: 2 },
+  { source: 'm8', target: 'core', value: 1 },
+  { source: 'm9', target: 'core', value: 1 },
+
+  // 高贡献移民直连项目（贡献大，直接参与）
+  { source: 'm1', target: 'p1', value: 4 },
+  { source: 'm1', target: 'h2', value: 3 },
+  { source: 'm2', target: 'p2', value: 4 },
+  { source: 'm2', target: 'h1', value: 3 },
+  { source: 'm3', target: 'p3', value: 3 },
+  { source: 'm3', target: 'h4', value: 2 },
+
+  // 移民互助（人帮人）
+  { source: 'm1', target: 'm8', value: 2 },
+  { source: 'm2', target: 'm9', value: 2 },
+  { source: 'm3', target: 'm7', value: 2 },
+  { source: 'm4', target: 'm6', value: 1 },
+  { source: 'm5', target: 'm8', value: 1 },
+
+  // 项目互联
+  { source: 'p3', target: 'p1', value: 2 },
+  { source: 'p2', target: 'p4', value: 2 },
+  { source: 'h1', target: 'h3', value: 2 },
+];
+
+const categories = [
+  { name: '社区核心', itemStyle: { color: '#f5a623' } },
+  { name: '数字移民', itemStyle: { color: '#4fc3f7' } },
+  { name: '基础资源项目', itemStyle: { color: '#81c784' } },
+  { name: '互助好事项目', itemStyle: { color: '#ce93d8' } },
+  { name: '高贡献移民', itemStyle: { color: '#ff8a65' } },
+];
+
+const option = {
+  backgroundColor: '#0a0e1a',
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: 'rgba(0,0,0,0.85)',
+    borderColor: 'rgba(255,255,255,0.2)',
+    textStyle: { color: '#fff', fontSize: 13 },
+    formatter: (params) => {
+      if (params.dataType === 'node') {
+        return `<b>${params.data.name.replace('\n', '<br>')}</b><br>贡献指数：${params.data.value}`;
+      }
+      return `连接强度：${params.data.value}`;
+    }
+  },
+  series: [{
+    type: 'graph',
+    layout: 'force',
+    data: nodes,
+    links: links,
+    categories: categories,
+    roam: true,
+    draggable: true,
+    force: {
+      repulsion: 380,
+      gravity: 0.08,
+      edgeLength: [80, 200],
+      layoutAnimation: true,
+    },
+    label: {
+      show: true,
+      position: 'bottom',
+      fontSize: 11,
+      color: 'rgba(255,255,255,0.85)',
+      formatter: (p) => p.data.name.split('\n')[0],
+    },
+    itemStyle: {
+      borderColor: 'rgba(255,255,255,0.3)',
+      borderWidth: 1.5,
+      shadowBlur: 15,
+      shadowColor: 'rgba(255,255,255,0.2)',
+    },
+    lineStyle: {
+      color: 'rgba(255,255,255,0.15)',
+      width: 1.5,
+      curveness: 0.2,
+    },
+    emphasis: {
+      focus: 'adjacency',
+      lineStyle: { width: 4, color: 'rgba(255,200,100,0.8)' },
+      itemStyle: { shadowBlur: 30, shadowColor: 'rgba(255,200,100,0.6)' },
+      label: { show: true, fontSize: 13, color: '#fff' }
+    },
+    // 贡献越高，光晕越强
+    select: { itemStyle: { shadowBlur: 40 } },
+  }]
+};
+
+chart.setOption(option);
+window.addEventListener('resize', () => chart.resize());
+</script>
+</body>
+</html>

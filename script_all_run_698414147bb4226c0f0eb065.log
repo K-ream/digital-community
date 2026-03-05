@@ -1,0 +1,115 @@
+INFO 2026-02-24 12:36:28,146 [script_all_run.py:34] survey_process: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:36:28,234 [survey_process.py:480] DEBUG CONFIG: [["用户生态", "rename", "q24"], ["年龄四分类", "radio", [["18岁以下", "q30=18岁以下"], ["18-24岁", "q30=18岁|19岁|20岁|21岁|22岁|23岁|24岁"], ["25-30岁", "q30=25岁|26岁|27岁|28岁|29岁|30岁"], ["31岁以上", "q30=31岁|32岁|33岁|34岁|35岁|36岁|37岁|38岁|39岁|40岁及以上"]]], ["年龄", "radio", [["18岁以下", "q30=18岁以下"], ["18-22岁", "q30=18岁|19岁|20岁|21岁|22岁"], ["23-25岁", "q30=23岁|24岁|25岁"], ["26-30岁", "q30=26岁|27岁|28岁|29岁|30岁"], ["31-35岁", "q30=31岁|32岁|33岁|34岁|35岁"], ["36岁及以上", "q30=36岁|37岁|38岁|39岁|40岁及以上"]]], ["性别", "rename", "q29"], ["职业", "radio", [["上班", "q31=企业公司一般职员|企业公司管理者|党政／事业单位／公务员|产业／服务业工人"], ["学生", "q31=大学及以上在读|高中在读|初中在读|小学在读"], ["自由职业", "q31=务农人员|自由职业者／个体经营者|无业人士／退休"]]], ["继续尝试意愿", "checkbox", [["高尝试意愿", "q5=4分 － 比较愿意|5分 － 非常愿意"], ["尝试意愿一般", "q5=3分 － 一般"], ["低尝试意愿", "q5=1分 － 非常不愿意|2分 － 比较不愿意"], ["非高尝试意愿", "q5=1分 － 非常不愿意|2分 － 比较不愿意|3分 － 一般"]]], ["通行证参与情况", "radio", [["付费参与", "q19=购买了高级通行证|购买了豪华通行证"], ["免费参与", "q19=免费参与－日常游玩无意间参与了|免费参与－专门为了通行证做任务"]]], ["认知的新内容", "rename", "q8"], ["商业化新内容", "rename", "q14"], ["当前段位", "radio", [["无段位", "RankedDivision=无段位"], ["低段位", "RankedDivision=低段位"], ["中段位", "RankedDivision=中段位"], ["高段位", "RankedDivision=高段位"]]], ["q当前段位", "rename", "当前段位"], ["等级进度", "radio", [["10级及以下", "AcntRoleLevel=10级及以下"], ["11-14级", "AcntRoleLevel=11-14级"], ["15-19级", "AcntRoleLevel=15-19级"], ["20级及以上", "AcntRoleLevel=20级及以上"]]], ["q等级进度", "rename", "等级进度"], ["后台付费分层", "radio", [["未付费", "PaylevelTotal<=0"], ["小R", "PaylevelTotal<=50"], ["中R", "PaylevelTotal<=200"], ["中大R", "PaylevelTotal<=500"], ["大R", "PaylevelTotal<=1000"], ["超R", "PaylevelTotal>1000"]]], ["q后台付费分层", "rename", "后台付费分层"], ["后台付费分层2", "radio", [["未付费", "PaylevelTotal<=0"], ["小R", "PaylevelTotal<=50"], ["中R", "PaylevelTotal<=500"], ["大R", "PaylevelTotal>500"]]], ["q后台付费分层2", "rename", "后台付费分层2"], ["用户状态(近2周)", "radio", [["新进", "Acttype2w=新进"], ["回流", "Acttype2w=回流"], ["留存", "Acttype2w=留存"]]], ["q用户状态(近2周)", "rename", "用户状态(近2周)"]]
+INFO 2026-02-24 12:36:28,335 [survey_process.py:481] ------------------------------读取数据--------------------------------
+INFO 2026-02-24 12:36:29,563 [survey_process.py:493] -------------------------------自定义字段------------------------------
+INFO 2026-02-24 12:36:31,602 [survey_process.py:152] 用户生态
+INFO 2026-02-24 12:36:31,697 [survey_process.py:152] 年龄四分类
+INFO 2026-02-24 12:36:32,118 [survey_process.py:152] 年龄
+INFO 2026-02-24 12:36:32,487 [survey_process.py:152] 性别
+INFO 2026-02-24 12:36:32,574 [survey_process.py:152] 职业
+INFO 2026-02-24 12:36:33,042 [survey_process.py:152] 继续尝试意愿
+INFO 2026-02-24 12:36:34,400 [survey_process.py:152] 通行证参与情况
+INFO 2026-02-24 12:36:34,772 [survey_process.py:152] 认知的新内容
+INFO 2026-02-24 12:36:34,866 [survey_process.py:152] 商业化新内容
+INFO 2026-02-24 12:36:34,974 [survey_process.py:152] 当前段位
+WARNING 2026-02-24 12:36:35,083 [survey_process.py:132] RankedDivision 不在question_meta中
+WARNING 2026-02-24 12:36:35,177 [survey_process.py:132] RankedDivision 不在question_meta中
+WARNING 2026-02-24 12:36:35,283 [survey_process.py:132] RankedDivision 不在question_meta中
+WARNING 2026-02-24 12:36:35,395 [survey_process.py:132] RankedDivision 不在question_meta中
+INFO 2026-02-24 12:36:35,918 [survey_process.py:152] q当前段位
+INFO 2026-02-24 12:36:36,018 [survey_process.py:152] 等级进度
+WARNING 2026-02-24 12:36:36,111 [survey_process.py:132] AcntRoleLevel 不在question_meta中
+WARNING 2026-02-24 12:36:36,204 [survey_process.py:132] AcntRoleLevel 不在question_meta中
+WARNING 2026-02-24 12:36:36,294 [survey_process.py:132] AcntRoleLevel 不在question_meta中
+WARNING 2026-02-24 12:36:36,406 [survey_process.py:132] AcntRoleLevel 不在question_meta中
+INFO 2026-02-24 12:36:36,854 [survey_process.py:152] q等级进度
+INFO 2026-02-24 12:36:36,957 [survey_process.py:152] 后台付费分层
+INFO 2026-02-24 12:36:37,534 [survey_process.py:152] q后台付费分层
+INFO 2026-02-24 12:36:37,625 [survey_process.py:152] 后台付费分层2
+INFO 2026-02-24 12:36:38,114 [survey_process.py:152] q后台付费分层2
+INFO 2026-02-24 12:36:38,210 [survey_process.py:152] 用户状态(近2周)
+WARNING 2026-02-24 12:36:38,314 [survey_process.py:132] Acttype2w 不在question_meta中
+WARNING 2026-02-24 12:36:38,412 [survey_process.py:132] Acttype2w 不在question_meta中
+WARNING 2026-02-24 12:36:38,587 [survey_process.py:132] Acttype2w 不在question_meta中
+INFO 2026-02-24 12:36:39,085 [survey_process.py:152] q用户状态(近2周)
+INFO 2026-02-24 12:36:39,183 [survey_process.py:504] -------------------------------数据筛选--------------------------------
+INFO 2026-02-24 12:36:40,167 [survey_process.py:264] filter data : [[None, 16175, None, '2026-02-14 00:02:52', '2026-02-21 00:19:34'], ['时间小于60秒', 15992, 183, '2026-02-14 00:02:52', '2026-02-21 00:19:34'], ['时间大于1500秒', 15937, 55, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['满意度高但不愿意继续玩', 15911, 27, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['同一个更新内容既超出预期又低于预期', 12417, 3570, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['认为宝可梦的平衡性差但又对宝可梦平衡性满意度高', 11967, 702, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['同一个活动既比较喜欢又不太喜欢', 10497, 3235, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['付费非常不满意但付费体验没有不满意的点', 10268, 291, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['未成年的企业管理层、公务员', 10201, 187, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['成年但还在义务教育阶段', 10096, 221, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['30岁以上还在念非高等教育', 10094, 4, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['付费小于0的脏数据', 10094, 0, '2026-02-14 00:02:52', '2026-02-20 23:56:18']]
+INFO 2026-02-24 12:36:40,260 [survey_process.py:507] -------------------------------计算权重--------------------------------
+INFO 2026-02-24 12:36:40,352 [survey_process.py:510] -------------------------------再次数据筛选--------------------------------
+INFO 2026-02-24 12:36:40,439 [survey_process.py:264] filter data : [[None, 16175, None, '2026-02-14 00:02:52', '2026-02-21 00:19:34'], ['时间小于60秒', 15992, 183, '2026-02-14 00:02:52', '2026-02-21 00:19:34'], ['时间大于1500秒', 15937, 55, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['满意度高但不愿意继续玩', 15911, 27, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['同一个更新内容既超出预期又低于预期', 12417, 3570, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['认为宝可梦的平衡性差但又对宝可梦平衡性满意度高', 11967, 702, '2026-02-14 00:02:52', '2026-02-21 00:01:22'], ['同一个活动既比较喜欢又不太喜欢', 10497, 3235, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['付费非常不满意但付费体验没有不满意的点', 10268, 291, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['未成年的企业管理层、公务员', 10201, 187, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['成年但还在义务教育阶段', 10096, 221, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['30岁以上还在念非高等教育', 10094, 4, '2026-02-14 00:02:52', '2026-02-20 23:56:18'], ['付费小于0的脏数据', 10094, 0, '2026-02-14 00:02:52', '2026-02-20 23:56:18']]
+INFO 2026-02-24 12:36:41,729 [survey_process.py:528] -------------------------------清洗结束--------------------------------
+INFO 2026-02-24 12:36:41,842 [script_all_run.py:37] check_data: 698414147bb4226c0f0eb065
+WARNING 2026-02-24 12:36:42,961 [check_data.py:44] 当前段位 的opt中有未选值：{'低段位', '高段位', '无段位', '中段位'}, opts_set: {'低段位', '高段位', '无段位', '中段位'}, data_set: set()
+WARNING 2026-02-24 12:36:43,075 [check_data.py:44] q当前段位 的opt中有未选值：{'低段位', '高段位', '无段位', '中段位'}, opts_set: {'低段位', '高段位', '无段位', '中段位'}, data_set: set()
+WARNING 2026-02-24 12:36:43,180 [check_data.py:44] 等级进度 的opt中有未选值：{'10级及以下', '15-19级', '11-14级', '20级及以上'}, opts_set: {'10级及以下', '15-19级', '11-14级', '20级及以上'}, data_set: set()
+WARNING 2026-02-24 12:36:43,275 [check_data.py:44] q等级进度 的opt中有未选值：{'10级及以下', '15-19级', '11-14级', '20级及以上'}, opts_set: {'10级及以下', '15-19级', '11-14级', '20级及以上'}, data_set: set()
+WARNING 2026-02-24 12:36:43,392 [check_data.py:44] 后台付费分层 的opt中有未选值：{'中R', '超R', '中大R', '小R', '大R', '未付费'}, opts_set: {'中R', '小R', '超R', '大R', '未付费', '中大R'}, data_set: set()
+WARNING 2026-02-24 12:36:43,492 [check_data.py:44] q后台付费分层 的opt中有未选值：{'中R', '超R', '中大R', '小R', '大R', '未付费'}, opts_set: {'中R', '小R', '超R', '大R', '未付费', '中大R'}, data_set: set()
+WARNING 2026-02-24 12:36:43,607 [check_data.py:44] 后台付费分层2 的opt中有未选值：{'小R', '中R', '未付费', '大R'}, opts_set: {'小R', '中R', '未付费', '大R'}, data_set: set()
+WARNING 2026-02-24 12:36:43,701 [check_data.py:44] q后台付费分层2 的opt中有未选值：{'小R', '中R', '未付费', '大R'}, opts_set: {'小R', '中R', '未付费', '大R'}, data_set: set()
+WARNING 2026-02-24 12:36:43,817 [check_data.py:44] 用户状态(近2周) 的opt中有未选值：{'新进', '回流', '留存'}, opts_set: {'新进', '回流', '留存'}, data_set: set()
+WARNING 2026-02-24 12:36:43,914 [check_data.py:44] q用户状态(近2周) 的opt中有未选值：{'新进', '回流', '留存'}, opts_set: {'新进', '回流', '留存'}, data_set: set()
+INFO 2026-02-24 12:36:44,032 [script_all_run.py:40] calculate_cross: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:36:44,147 [survey_process_cross.py:44] -------------------------------交叉分析--------------------------------
+INFO 2026-02-24 12:37:47,425 [survey_process_cross.py:37] cross 698414147bb4226c0f0eb065 0 1 开始写数据: 0.0022321073338389397GB
+INFO 2026-02-24 12:37:48,188 [survey_process_cross.py:40] cross 698414147bb4226c0f0eb065 0 1 结束
+INFO 2026-02-24 12:37:48,274 [script_all_run.py:44] calculate_output: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:37:50,045 [script_all_run.py:47] indicator_output: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:37:51,411 [script_all_run.py:50] extra_output: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:37:53,100 [script_all_run.py:53] sort_opt_freq: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:37:55,552 [script_all_run.py:61] data_output: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:37:55,653 [data_output.py:157] download_report_file: 698414147bb4226c0f0eb065
+INFO 2026-02-24 12:37:55,993 [survey_util.py:959] download: ./问卷清洗交付/nishikiB06数据处理清洗/nishikiB06数据处理清洗_指标.xlsx
+INFO 2026-02-24 12:37:56,252 [survey_util.py:959] download: ./问卷清洗交付/nishikiB06数据处理清洗/nishikiB06数据处理清洗_统计信息.xlsx
+INFO 2026-02-24 12:37:56,434 [survey_util.py:959] download: ./问卷清洗交付/nishikiB06数据处理清洗/nishikiB06数据处理清洗_频数表.xlsx
+INFO 2026-02-24 12:37:56,583 [survey_util.py:959] download: ./问卷清洗交付/nishikiB06数据处理清洗/nishikiB06数据处理清洗_频率表.xlsx
+INFO 2026-02-24 12:37:56,730 [survey_util.py:959] download: ./问卷清洗交付/nishikiB06数据处理清洗/nishikiB06数据处理清洗_频率表_选项排序.xlsx
+INFO 2026-02-24 12:37:56,900 [data_output.py:159] Download Completed...
+INFO 2026-02-24 12:37:57,012 [script_all_run.py:64] script all run finished: 698414147bb4226c0f0eb065
+注意！读取本地配置而不是COS: /root/.openclaw/workspace/webdata-crawling/config/survey_cross_tab/698414147bb4226c0f0eb065.yaml
+_id 不在question_meta中
+ip 不在question_meta中
+client_id 不在question_meta中
+user_agent 不在question_meta中
+started_at 不在question_meta中
+ended_at 不在question_meta中
+answer_consumed 不在question_meta中
+abnormal_end 不在question_meta中
+answer_finished 不在question_meta中
+effective 不在question_meta中
+user_type 不在question_meta中
+uid 不在question_meta中
+channel 不在question_meta中
+created_at 不在question_meta中
+updated_at 不在question_meta中
+adcode 不在question_meta中
+browser 不在question_meta中
+city 不在question_meta中
+device 不在question_meta中
+district 不在question_meta中
+nation 不在question_meta中
+os 不在question_meta中
+province 不在question_meta中
+source 不在question_meta中
+indicators 不在question_meta中
+q2t16 不在question_meta中
+q3t16 不在question_meta中
+q6t16 不在question_meta中
+q7t19 不在question_meta中
+q11t14 不在question_meta中
+q13t12 不在question_meta中
+q18t15 不在question_meta中
+q20t12 不在question_meta中
+q21t13 不在question_meta中
+q25t 不在question_meta中
+q28t16 不在question_meta中
+q31t12 不在question_meta中
+q33t1 不在question_meta中
+AcntRoleLevel 不在question_meta中
+RankedDivision 不在question_meta中
+Acttype2w 不在question_meta中
+PaylevelTotal 不在question_meta中
+权重0 不在question_meta中
+注意！读取本地配置而不是COS: /root/.openclaw/workspace/webdata-crawling/config/sql_keywords.yaml
+注意！读取本地配置而不是COS: /root/.openclaw/workspace/webdata-crawling/config/sql_keywords.yaml
+注意！读取本地配置而不是COS: /root/.openclaw/workspace/webdata-crawling/config/survey_cross_tab/698414147bb4226c0f0eb065.yaml
