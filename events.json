@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-09T15:27:00+08:00",
-    "lastUpdatedDisplay": "2026年3月9日 15:27:00"
+    "lastUpdated": "2026-03-09T15:18:35+08:00",
+    "lastUpdatedDisplay": "2026年3月9日 15:18:35"
   },
   "events": [
     {
@@ -46,21 +46,6 @@
       "importance": "🔴 重大",
       "title": "xAI 发布 Grok 3.5：实时联网推理，马斯克称已超越所有现有模型",
       "desc": "Elon Musk 旗下 xAI 于3月8日正式发布 Grok 3.5，该模型原生集成 X（Twitter）实时数据流，可对最新新闻、市场动态和社交讨论进行实时推理。在 GPQA Diamond 科学推理基准中，Grok 3.5 以89.2分刷新纪录，超越 Gemini 3.1 Pro（85.4分）和 GPT-5.2（82.1分）。模型同时推出「DeepSearch」模式，可对互联网内容进行多跳推理并生成可引用报告，X Premium+ 订阅用户率先开放访问。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
-      "id": 78,
-      "date": "2026-03-08",
-      "dateDay": "08",
-      "dateMonth": "2026年3月",
-      "cat": "industry",
-      "catLabel": "💼 产业动态",
-      "catClass": "cat-industry",
-      "dotColor": "orange",
-      "importance": "🟠高",
-      "title": "谷歌 DeepMind 发布 Gemini Robotics，具身智能进入通用机器人时代",
-      "desc": "谷歌 DeepMind 于3月8日正式发布 Gemini Robotics 框架，将 Gemini 2.0 多模态理解能力与机器人控制系统深度融合。新框架允许机器人通过自然语言指令完成复杂物理操作任务，在灵巧操控基准（DART）上得分91.3%，较前代提升37%。与丰田研究所、波士顿动力合作的10款机器人已接入 Gemini Robotics，DeepMind 同步开源轻量版 RT-X 模型，具身 AI 进入多模态大模型驱动的新阶段。",
       "impact": "",
       "impactClass": ""
     },
@@ -140,21 +125,6 @@
       "impactClass": ""
     },
     {
-      "id": 79,
-      "date": "2026-03-06",
-      "dateDay": "06",
-      "dateMonth": "2026年3月",
-      "cat": "china",
-      "catLabel": "🌏 中国AI",
-      "catClass": "cat-china",
-      "dotColor": "green",
-      "importance": "🟠高",
-      "title": "华为盘古大模型5.0发布：首个覆盖工业全场景的行业大模型",
-      "desc": "华为云于3月6日正式发布盘古大模型5.0，重点面向制造、能源、金融、政务四大行业提供深度定制 AI 能力。盘古5.0采用「基础模型+行业子模型+场景微调」三层架构，工业质检准确率达99.2%，能源负荷预测误差降至1.3%。新版本同步发布盘古 Code 2.0，在工业软件开发场景（如 PLC 编程、CAD 脚本）中表现超越 GPT-5，并与昇腾 AI 集群深度适配，强化国产 AI 全栈自主能力。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
       "id": 43,
       "date": "2026-03-05",
       "dateDay": "05",
@@ -226,21 +196,6 @@
       "importance": "🔴 重大",
       "title": "AI疾病预测准确率超越人类医生，医疗诊断领域迎来革命",
       "desc": "根据 The Batch #342 报道，最新研究显示 AI 系统在多种疾病早期预测中准确率达到97.3%，远超人类医生的84.7%。该系统融合多模态医学数据（影像、基因组、生活方式），可在症状出现前数月预测糖尿病、心血管疾病等慢性病，同时实现癌症、神经退行性疾病的早期筛查。微软与多家医院合作部署临床试验，将AI疾病预测纳入常规体检流程。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
-      "id": 80,
-      "date": "2026-03-05",
-      "dateDay": "05",
-      "dateMonth": "2026年3月",
-      "cat": "safety",
-      "catLabel": "⚠️ 安全伦理",
-      "catClass": "cat-safety",
-      "dotColor": "red",
-      "importance": "🟠高",
-      "title": "美国 NIST 发布 AI 红队测试国家标准，高风险系统强制执行",
-      "desc": "美国国家标准与技术研究院（NIST）于3月5日正式发布《AI 系统红队测试标准（NIST AI 800-1）》，要求应用于关键基础设施、医疗、司法领域的高风险 AI 系统每年至少完成一次由独立第三方主导的红队测试，并向 AI 安全中心提交测试报告。标准涵盖对抗提示攻击、越狱测试、隐私泄露评估三大类必测项目，预计覆盖美国境内超过2000个高风险 AI 系统部署，为全球 AI 安全测试标准化树立重要参考。",
       "impact": "",
       "impactClass": ""
     },
@@ -845,21 +800,6 @@
       "impactClass": ""
     },
     {
-      "id": 86,
-      "date": "2025-08-18",
-      "dateDay": "18",
-      "dateMonth": "2025年8月",
-      "cat": "model",
-      "catLabel": "🧠 模型突破",
-      "catClass": "cat-model",
-      "dotColor": "blue",
-      "importance": "🔴极高",
-      "title": "OpenAI 发布 o1 Preview：慢思考推理首次商业化，数学竞赛准确率震惊业界",
-      "desc": "OpenAI 于2025年8月18日向 ChatGPT Plus 用户开放 o1 Preview 版本，这是「Chain-of-Thought」强化学习推理模型的首次公开商业化测试。o1 Preview 在 AIME 2024 数学竞赛中取得74.4%正确率（GPT-4o 为9.3%），在物理奥林匹克题目上超越金牌水平。用户需等待模型「思考」数十秒到数分钟，这一「延迟换精度」的全新交互模式引发热议，被广泛视为 AI 从「快问快答」走向「深度推理」的历史性转折。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
       "date": "2025-08-01",
       "cat": "safety",
       "catLabel": "⚠️ 安全伦理",
@@ -886,21 +826,6 @@
       "importance": "🔴极高",
       "title": "中国发布「新一代AI发展规划2.0」，算力国家化战略全面升级",
       "desc": "国务院于2025年7月23日印发《新一代人工智能发展规划（2025-2030）》，将 AI 算力基础设施列为国家战略资产，计划至2030年国产 AI 芯片市占率达到60%，建设「东数西算」AI 超算走廊。规划明确将大模型、具身智能、AI+工业互联网列为重点攻关方向，并设立500亿元国家 AI 产业引导基金。这是继2017年版规划后中国首次全面升级 AI 国家战略，标志着 AI 竞争从企业层面上升至国家战略核心。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
-      "id": 85,
-      "date": "2025-06-25",
-      "dateDay": "25",
-      "dateMonth": "2025年6月",
-      "cat": "china",
-      "catLabel": "🌏 中国AI",
-      "catClass": "cat-china",
-      "dotColor": "green",
-      "importance": "🔴极高",
-      "title": "百度文心一言4.0与腾讯混元发布，中国大模型「百模大战」白热化",
-      "desc": "2025年6月，百度在世界人工智能大会上正式发布文心一言4.0，中文综合能力首次与 GPT-4o 持平；腾讯混元 Turbo 同期亮相，推理速度提升3倍。本届 WAIC 共展出超过200款国产大模型产品，AI 应用覆盖政务、医疗、教育、法律等核心场景。工信部数据显示，中国大模型企业数量已超1500家，年商业化落地金额突破600亿元，「百模大战」格局形成强者恒强趋势，市场加速向头部集中。",
       "impact": "",
       "impactClass": ""
     },
@@ -961,21 +886,6 @@
       "importance": "🔴极高",
       "title": "DeepSeek-V3 发布：开源旗舰震撼全球，训练成本仅600万美元",
       "desc": "深度求索于2025年3月18日发布 DeepSeek-V3，参数量达671B（MoE架构，激活37B），以区区600万美元训练成本达到与 GPT-4o 和 Claude 3.5 Sonnet 旗鼓相当的性能。DeepSeek-V3 在 MMLU、HumanEval、MATH 等主流基准均位居顶尖，并以 MIT 协议完全开源。极低的训练和推理成本引发全球业界震动，让英伟达股价单日暴跌17%，彻底改变了 AI 训练成本叙事，被《麻省理工科技评论》评为2025年度最重要 AI 突破。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
-      "id": 84,
-      "date": "2025-03-05",
-      "dateDay": "05",
-      "dateMonth": "2025年3月",
-      "cat": "policy",
-      "catLabel": "🏛️ 政策法规",
-      "catClass": "cat-policy",
-      "dotColor": "purple",
-      "importance": "🟠高",
-      "title": "美国 AI 安全研究院正式运营，非营利独立机构监督高风险 AI",
-      "desc": "美国人工智能安全研究院（AISI）于2025年3月5日正式独立运营，脱离商务部管辖，转型为由国会直接授权、接受多党监督的非营利性独立机构。AISI 获得年度预算4.5亿美元，专注于对 Frontier AI 模型进行强制性安全评估，并与英国 AISI、欧盟 AI Office 建立三方信息共享机制。这是拜登时代 AI 安全政策在特朗普政府框架下的重要延续，也是美国 AI 安全治理制度化的标志性节点。",
       "impact": "",
       "impactClass": ""
     },
@@ -1100,21 +1010,6 @@
       "impactClass": ""
     },
     {
-      "id": 82,
-      "date": "2024-08-06",
-      "dateDay": "06",
-      "dateMonth": "2024年8月",
-      "cat": "model",
-      "catLabel": "🧠 模型突破",
-      "catClass": "cat-model",
-      "dotColor": "blue",
-      "importance": "🔴极高",
-      "title": "GPT-4o mini 发布：高性价比小模型掀起大众 AI 普及浪潮",
-      "desc": "OpenAI 于2024年8月6日正式发布 GPT-4o mini，定价仅 $0.15/百万输入 token，是 GPT-3.5 Turbo 价格的1/10，同时在 MMLU、推理和代码基准上全面超越 GPT-3.5。新模型向 ChatGPT 免费用户开放，单日新增对话量突破1亿次。GPT-4o mini 的发布使高质量 AI 能力首次真正实现「白菜价」普及，被视为 AI 大众化的关键转折点，催生了大量低成本 AI 应用创业项目。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
       "date": "2024-07-23",
       "cat": "model",
       "catLabel": "🧠 模型突破",
@@ -1190,21 +1085,6 @@
       "impactClass": ""
     },
     {
-      "id": 83,
-      "date": "2024-03-20",
-      "dateDay": "20",
-      "dateMonth": "2024年3月",
-      "cat": "china",
-      "catLabel": "🌏 中国AI",
-      "catClass": "cat-china",
-      "dotColor": "green",
-      "importance": "🟠高",
-      "title": "通义千问 Qwen1.5 开源发布，中文指令跟随能力全球领先",
-      "desc": "阿里云于2024年3月20日发布 Qwen1.5 系列（0.5B 至 72B 共六档），以 Apache 2.0 协议全面开源。Qwen1.5-72B 在中文综合评测中超越 Llama 2-70B 和 Mistral-8x7B，成为当时中文能力最强的开源模型。该系列支持多语言对话、长上下文（32K token）和函数调用，被全球开发者迅速集成至智能客服、教育和办公自动化场景，HuggingFace 下载量三个月内突破500万次。",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
       "date": "2024-03-04",
       "cat": "model",
       "catLabel": "🧠 模型突破",
@@ -1231,21 +1111,6 @@
       "id": 61,
       "dateDay": "15",
       "dateMonth": "2024年2月",
-      "impact": "",
-      "impactClass": ""
-    },
-    {
-      "id": 81,
-      "date": "2024-01-22",
-      "dateDay": "22",
-      "dateMonth": "2024年1月",
-      "cat": "model",
-      "catLabel": "🧠 模型突破",
-      "catClass": "cat-model",
-      "dotColor": "blue",
-      "importance": "🔴极高",
-      "title": "OpenAI 发布 GPT-4 Turbo with Vision，多模态 API 全面开放",
-      "desc": "OpenAI 于2024年1月22日正式向所有 API 用户开放 GPT-4 Turbo with Vision，支持图像输入与文本混合推理，上下文窗口扩展至128K token，每百万输入 token 定价降至 $10（较 GPT-4 降低约67%）。同期 API 调用量创历史新高，企业级图文理解应用爆发式增长。此次开放标志着多模态大模型从研究预览正式走向大规模商业部署，推动视觉 AI 与文档理解应用进入新阶段。",
       "impact": "",
       "impactClass": ""
     }
