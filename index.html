@@ -50,7 +50,10 @@
   .nav-logo {
     font-size: 18px; font-weight: 700; letter-spacing: 2px;
     background: linear-gradient(135deg, #4fc3f7, #ce93d8);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #4fc3f7; /* fallback */
     text-decoration: none;
   }
   .nav-links { display: flex; gap: 24px; align-items: center; }
@@ -100,7 +103,10 @@
   .page-title {
     font-size: 36px; font-weight: 800; letter-spacing: 2px;
     background: linear-gradient(135deg, #4fc3f7 30%, #ce93d8 70%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #4fc3f7; /* fallback */
     margin-bottom: 8px;
   }
   .page-subtitle { color: rgba(255,255,255,0.7); font-size: 15px; letter-spacing: 1px; }
