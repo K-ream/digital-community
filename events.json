@@ -1,9 +1,69 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-09T16:50:00+08:00",
-    "lastUpdatedDisplay": "2026年3月9日 16:50:00"
+    "lastUpdated": "2026-03-09T17:00:00+08:00",
+    "lastUpdatedDisplay": "2026年3月9日 17:00:00"
   },
   "events": [
+    {
+      "id": 103,
+      "date": "2026-03-09",
+      "dateDay": "09",
+      "dateMonth": "2026年3月",
+      "cat": "china",
+      "catLabel": "🌏 中国AI",
+      "catClass": "cat-china",
+      "dotColor": "green",
+      "importance": "🟠高",
+      "title": "达摩院MAOSS模型：AI筛查脂肪肝，高危检出率翻倍",
+      "desc": "阿里巴巴达摩院联合中国医科大学附属盛京医院、南京大学附属鼓楼医院等多家机构，共同研发出脂肪肝筛查AI模型MAOSS，相关成果已于2月发表于国际权威期刊《自然-通讯》。MAOSS通过整合平扫CT影像与血清指标等常规临床数据，可同时实现脂肪肝分期判断与肝纤维化评估，高风险患者检出率较传统筛查方式翻倍。该模型具备无创、低成本优势，适合大规模人群筛查场景。中国脂肪肝患病人数超2亿，MAOSS的发布被视为AI医疗影像在肝脏疾病早筛领域的重要突破，也是达摩院将大模型能力向垂直医疗场景落地的最新进展。",
+      "impact": "",
+      "impactClass": ""
+    },
+    {
+      "id": 102,
+      "date": "2026-03-09",
+      "dateDay": "09",
+      "dateMonth": "2026年3月",
+      "cat": "china",
+      "catLabel": "🌏 中国AI",
+      "catClass": "cat-china",
+      "dotColor": "green",
+      "importance": "🟡中",
+      "title": "小红书FireRed v1.1开源：图像编辑新SOTA，攻克ID一致性",
+      "desc": "小红书Super Intelligence团队于3月9日发布并全面开源图像编辑模型FireRed-Image-Edit v1.1，距1.0版本发布不足一个月，迭代速度大幅提升。v1.1在ID一致性编辑、多元素融合及人像美妆等复杂场景进行深度优化，推理时间缩短至4.5秒，显存占用控制在30GB以内，整体效果在主流基准测试中超越当前所有开源方案，部分指标逼近Nano Banana 2等商业闭源模型。项目代码、技术报告、模型权重与训练框架均以开源形式发布，提供完整的训练和部署支持。这是国内内容平台在AI基础模型层「开源反哺」的又一标志性动作，也将加速图像编辑AI应用的普及与商业化落地。",
+      "impact": "",
+      "impactClass": ""
+    },
+    {
+      "id": 101,
+      "date": "2026-03-09",
+      "dateDay": "09",
+      "dateMonth": "2026年3月",
+      "cat": "industry",
+      "catLabel": "💼 产业动态",
+      "catClass": "cat-industry",
+      "dotColor": "orange",
+      "importance": "🟠高",
+      "title": "腾讯QClaw内测、火山ArkClaw上线，国产AI Agent工具化提速",
+      "desc": "3月9日，国产AI Agent生态迎来双重落地信号：腾讯内测QClaw一键启动包，支持微信、QQ双端接入OpenClaw智能体框架，深度集成Kimi、MiniMax等国产大模型，大幅降低企业和个人部署AI Agent的技术门槛；与此同时，火山引擎正式发布ArkClaw——基于OpenClaw平台的云端SaaS版本，整合豆包Seed-2.0 Pro，内置Skills安全扫描与飞书办公套件，向「Coding Plan」订阅用户开放早期访问。两款产品同日亮相折射出国内大厂加速将开源Agent框架产品化、生态化的战略意图，AI Agent从「开发者玩具」向「企业生产力工具」的转型进入新阶段。",
+      "impact": "",
+      "impactClass": ""
+    },
+    {
+      "id": 100,
+      "date": "2026-03-06",
+      "dateDay": "06",
+      "dateMonth": "2026年3月",
+      "cat": "model",
+      "catLabel": "🧠 模型突破",
+      "catClass": "cat-model",
+      "dotColor": "blue",
+      "importance": "🟠高",
+      "title": "Anthropic CEO摩根士丹利会议：Scaling Law未遇瓶颈，2026将迎AI激进加速",
+      "desc": "Anthropic首席执行官Dario Amodei在摩根士丹利TMT年度会议上发表重磅演讲，明确表态Scaling Law并未撞墙，业界担忧的「智能天花板」并不存在。他援引棋盘稻米寓言指出，AI能力正处于指数增长的下半段，2026年AI实验室的真实进展将远超公众预期。Amodei透露，Anthropic内部测试中已出现可将博士级科研任务从数年压缩至数周的模型原型，并预言AI将在2027年前实现「压缩版21世纪」效应——在5至10年内完成人类百年科研进展。这一公开表态不仅为Anthropic自身路线正名，也在AI圈引发关于Scaling是否仍是通往AGI唯一路径的新一轮大辩论。",
+      "impact": "",
+      "impactClass": ""
+    },
     {
       "id": 99,
       "date": "2026-03-09",
