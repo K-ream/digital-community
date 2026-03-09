@@ -372,8 +372,8 @@
     <p class="page-subtitle">全球人工智能重大事件追踪 · 实时更新</p>
   </div>
   <div class="page-hero-right">
-    <span class="meta-badge" id="totalCount">共 42 条事件</span>
-    <span class="meta-badge orange">最近更新：2026年3月5日</span>
+    <span class="meta-badge" id="totalCount">共 -- 条事件</span>
+    <span class="meta-badge orange" id="latestDate">最近更新：获取中...</span>
   </div>
 </div>
 
@@ -1025,6 +1025,14 @@ function renderTimeline(filter) {
   
   // Update count
   document.getElementById('totalCount').textContent = `共 ${events.length} 条事件`;
+
+  // Update latest date dynamically from events data
+  const sorted = [...events].sort((a, b) => new Date(b.date) - new Date(a.date));
+  if (sorted.length > 0) {
+    const latest = sorted[0];
+    const day = parseInt(latest.dateDay, 10);
+    document.getElementById('latestDate').textContent = `最近更新：${latest.dateMonth}${day}日`;
+  }
 
   if (filtered.length === 0) {
     container.innerHTML = `<div class="empty-state"><span>🔍</span>暂无该分类事件</div>`;
