@@ -333,7 +333,7 @@ function renderTimeline(filter) {
       '    </div>',
       '    <div class="tl-card-title">' + e.title + '</div>',
       '    <div class="tl-card-desc">' + e.desc + '</div>',
-      '    <div class="tl-card-impact' + impactClass + '">' + e.impact + '</div>',
+      (e.impact ? '    <div class="tl-card-impact' + impactClass + '">' + e.impact + '</div>' : ''),
       '  </div>',
       '</div>'
     ].join('\n');
