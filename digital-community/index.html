@@ -340,14 +340,6 @@ function renderTimeline(filter) {
 // ── 更新 Hero 统计 ──
 function updateStats() {
   document.getElementById('totalCount').textContent = '共 ' + allEvents.length + ' 条事件';
-  const sorted = allEvents.slice().sort(function(a, b) {
-    return new Date(b.date) - new Date(a.date);
-  });
-  if (sorted.length > 0) {
-    const latest = sorted[0];
-    const day = parseInt(latest.dateDay, 10);
-    document.getElementById('latestDate').textContent = '最近更新：' + latest.dateMonth + day + '日';
-  }
 }
 
 // ── 筛选按钮 ──
@@ -382,8 +374,17 @@ fetch('events.json')
     return res.json();
   })
   .then(function(data) {
-    allEvents = data;
-    updateStats();
+    // 支持新格式 { meta, events } 和旧格式 [ ... ]
+    if (Array.isArray(data)) {
+      allEvents = data;
+    } else {
+      allEvents = data.events || [];
+      if (data.meta && data.meta.lastUpdatedDisplay) {
+        document.getElementById('latestDate').textContent =
+          '最近更新：' + data.meta.lastUpdatedDisplay;
+      }
+    }
+    document.getElementById('totalCount').textContent = '共 ' + allEvents.length + ' 条事件';
     renderTimeline(currentFilter);
   })
   .catch(function(err) {
