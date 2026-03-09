@@ -1,0 +1,65 @@
+name: 自动注入更新时间戳
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'digital-community/events.json'
+
+jobs:
+  inject-timestamp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 注入 commit 时间到 events.json
+        run: |
+          python3 - <<'PYEOF'
+          import json, subprocess
+          from datetime import datetime, timezone, timedelta
+
+          # 获取最新 commit 的 UTC 时间
+          raw = subprocess.check_output(
+              ['git', 'log', '-1', '--format=%cI'],
+              text=True
+          ).strip()
+
+          # 解析并转换为 Asia/Shanghai (UTC+8)
+          dt_utc = datetime.fromisoformat(raw)
+          dt_sh = dt_utc.astimezone(timezone(timedelta(hours=8)))
+
+          iso_str = dt_sh.strftime('%Y-%m-%dT%H:%M:%S+08:00')
+          display_str = dt_sh.strftime('%Y年') + str(dt_sh.month) + '月' + str(dt_sh.day) + '日 ' + dt_sh.strftime('%H:%M:%S')
+
+          print(f'Commit time (Shanghai): {display_str}')
+
+          path = 'digital-community/events.json'
+          with open(path, 'r', encoding='utf-8') as f:
+              data = json.load(f)
+
+          # 兼容旧格式（纯数组）
+          if isinstance(data, list):
+              data = {'meta': {}, 'events': data}
+
+          data['meta']['lastUpdated'] = iso_str
+          data['meta']['lastUpdatedDisplay'] = display_str
+
+          with open(path, 'w', encoding='utf-8') as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+
+          print('events.json updated.')
+          PYEOF
+
+      - name: Commit & Push 时间戳
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add digital-community/events.json
+          git diff --cached --quiet && echo "No changes" || \
+            git commit -m "🕐 自动注入时间戳 [skip ci]" && git push
