@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'digital-community/events.json'
+      - 'events.json'
 
 jobs:
   inject-timestamp:
@@ -39,7 +39,7 @@ jobs:
 
           print(f'Commit time (Shanghai): {display_str}')
 
-          path = 'digital-community/events.json'
+          path = 'events.json'
           with open(path, 'r', encoding='utf-8') as f:
               data = json.load(f)
 
@@ -60,6 +60,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add digital-community/events.json
+          git add events.json
           git diff --cached --quiet && echo "No changes" || \
             git commit -m "🕐 自动注入时间戳 [skip ci]" && git push
