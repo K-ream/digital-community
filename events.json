@@ -113,6 +113,21 @@
       "date": "2026-03-19",
       "dateDay": "19",
       "dateMonth": "2026年3月",
+      "cat": "china",
+      "catLabel": "🌏 中国AI",
+      "catClass": "cat-china",
+      "dotColor": "green",
+      "importance": "🟠高",
+      "title": "小米发布MiMo-V2系列大模型",
+      "desc": "小米凌晨发布MiMo-V2系列三款大模型，包含推理增强版与多模态版本，在数学推理、代码生成等任务上取得显著提升。雷军同步宣布小米未来三年AI领域总投入超600亿元，将AI深度融入手机、家居及汽车生态，彰显小米在消费端AI竞争中的战略决心。",
+      "impact": "",
+      "impactClass": "",
+      "id": 906
+    },
+    {
+      "date": "2026-03-19",
+      "dateDay": "19",
+      "dateMonth": "2026年3月",
       "cat": "safety",
       "catLabel": "⚠️ 安全伦理",
       "catClass": "cat-safety",
@@ -678,6 +693,21 @@
       "impact": "",
       "impactClass": "",
       "id": 826
+    },
+    {
+      "date": "2026-03-18",
+      "dateDay": "18",
+      "dateMonth": "2026年3月",
+      "cat": "industry",
+      "catLabel": "💼 产业动态",
+      "catClass": "cat-industry",
+      "dotColor": "orange",
+      "importance": "🟠高",
+      "title": "Anthropic营收突破710亿美元",
+      "desc": "Anthropic最新披露营收已突破710亿美元年化规模，Claude企业版覆盖国家扩展至630个。公司在AI安全研究与商业化双轨并进，企业版用户规模持续快速增长。Anthropic的营收扩张速度再度超越市场预期，成为目前估值增长最快的AI独角兽之一。",
+      "impact": "",
+      "impactClass": "",
+      "id": 907
     },
     {
       "date": "2026-03-18",
