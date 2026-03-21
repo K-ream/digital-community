@@ -278,6 +278,21 @@
       "date": "2026-03-20",
       "dateDay": "20",
       "dateMonth": "2026年3月",
+      "cat": "model",
+      "catLabel": "🧠 模型突破",
+      "catClass": "cat-model",
+      "dotColor": "blue",
+      "importance": "🟠高",
+      "title": "谷歌发布Gemini 2.5 Flash思考版，高效推理能力再升级",
+      "desc": "谷歌正式推出Gemini 2.5 Flash，定位高效能推理模型，主打低成本与实时场景（如客服、文档解析）。该模型可根据查询复杂度动态调整处理时间，在速度、准确性与成本间灵活权衡。同期谷歌还推进Mac版Gemini应用（代号Janus）内部测试，覆盖图像生成、视频创作、数学运算等功能，进一步布局苹果生态，加速Gemini系列在多端的渗透。",
+      "impact": "",
+      "impactClass": "",
+      "id": 963
+    },
+    {
+      "date": "2026-03-20",
+      "dateDay": "20",
+      "dateMonth": "2026年3月",
       "cat": "safety",
       "catLabel": "⚠️ 安全伦理",
       "catClass": "cat-safety",
@@ -783,6 +798,21 @@
       "impact": "",
       "impactClass": "",
       "id": 882
+    },
+    {
+      "date": "2026-03-19",
+      "dateDay": "19",
+      "dateMonth": "2026年3月",
+      "cat": "industry",
+      "catLabel": "💼 产业动态",
+      "catClass": "cat-industry",
+      "dotColor": "orange",
+      "importance": "🟠高",
+      "title": "Meta官宣推进AI内容审核，将逐步替代第三方人工审核",
+      "desc": "3月19日，Meta在官网宣布，公司正推进将AI系统全面应用于内容审核，声称AI能更准确识别违规行为、阻止诈骗并更快响应突发事件，同时减少过度执法错误。未来几年，一旦确认新一代AI系统持续优于现有人工审核方法，将逐步将其部署到旗下所有应用，并减少对第三方供应商的依赖，转向强化内部AI系统，此举将深刻改变平台内容治理模式。",
+      "impact": "",
+      "impactClass": "",
+      "id": 964
     },
     {
       "date": "2026-03-19",
