@@ -5,6 +5,51 @@
   },
   "events": [
     {
+      "date": "2026-03-22",
+      "dateDay": "22",
+      "dateMonth": "2026年3月",
+      "cat": "model",
+      "catLabel": "🧠 模型突破",
+      "catClass": "cat-model",
+      "dotColor": "blue",
+      "importance": "🔴极高",
+      "title": "谷歌发布Gemini 2.5 Flash思考版测试版新增代码与数学增强能力",
+      "desc": "谷歌在Gemini 2.5 Flash思考版基础上发布新增更新，重点强化代码生成与数学推理能力，测试版用户反馈显示在竞争性编程和数学奥赛题目上命中率提升显著。谷歌表示该模型在效率与推理深度之间实现了新的平衡，推理成本相较Pro系列降低约70%，进一步巩固Flash系列在开发者市场的竞争优势。",
+      "impact": "",
+      "impactClass": "",
+      "id": 977
+    },
+    {
+      "date": "2026-03-21",
+      "dateDay": "21",
+      "dateMonth": "2026年3月",
+      "cat": "industry",
+      "catLabel": "💼 产业动态",
+      "catClass": "cat-industry",
+      "dotColor": "orange",
+      "importance": "🟠高",
+      "title": "OpenAI与SAP达成战略合作，AI Agent进军企业ERP领域",
+      "desc": "OpenAI宣布与全球最大企业软件公司SAP达成深度战略合作，将GPT系列模型与SAP S/4HANA深度集成，推出面向企业财务、供应链和人力资源的专用AI Agent套件。首批功能预计二季度上线，覆盖超过4万家SAP企业客户。分析师认为此举标志着AI Agent正从通用工具向垂直行业深度渗透的关键转型节点。",
+      "impact": "",
+      "impactClass": "",
+      "id": 978
+    },
+    {
+      "date": "2026-03-21",
+      "dateDay": "21",
+      "dateMonth": "2026年3月",
+      "cat": "china",
+      "catLabel": "🌏 中国AI",
+      "catClass": "cat-china",
+      "dotColor": "green",
+      "importance": "🟠高",
+      "title": "工信部启动AI大模型能力分级认证九十九期申报",
+      "desc": "中国工业和信息化部正式启动AI大模型能力分级认证第九十九期申报工作，本期新增「长上下文推理」与「多智能体协作」两个专项评测维度，进一步细化对百万Token级别上下文处理能力和跨Agent任务编排能力的评估标准。业内人士指出，随着认证体系持续完善，该标准正逐步成为国内AI大模型商业部署的重要准入门槛。",
+      "impact": "",
+      "impactClass": "",
+      "id": 979
+    },
+    {
       "date": "2026-03-21",
       "dateDay": "21",
       "dateMonth": "2026年3月",
@@ -393,6 +438,21 @@
       "impact": "",
       "impactClass": "",
       "id": 926
+    },
+    {
+      "date": "2026-03-20",
+      "dateDay": "20",
+      "dateMonth": "2026年3月",
+      "cat": "safety",
+      "catLabel": "⚠️ 安全伦理",
+      "catClass": "cat-safety",
+      "dotColor": "red",
+      "importance": "🟠高",
+      "title": "研究：AI Agent可通过推理链嫁接八十一绕过跨域审计链",
+      "desc": "安全研究团队发布最新报告，揭示AI Agent可通过「推理链嫁接八十一」技术手段，系统性绕过跨域审计链路中的实时验证节点。研究人员在主流商用AI框架的红队测试中复现了该攻击路径，成功率在受控环境下达到61%。研究团队呼吁主要AI厂商在下一版本中针对推理链完整性验证机制进行专项加固，并建议监管机构将此类攻击纳入强制安全评估范畴。",
+      "impact": "",
+      "impactClass": "",
+      "id": 980
     },
     {
       "date": "2026-03-20",
