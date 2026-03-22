@@ -8,6 +8,21 @@
       "date": "2026-03-22",
       "dateDay": "22",
       "dateMonth": "2026年3月",
+      "cat": "industry",
+      "catLabel": "💼 产业动态",
+      "catClass": "cat-industry",
+      "dotColor": "orange",
+      "importance": "🔴极高",
+      "title": "五角大楼反诉Anthropic法庭新进展",
+      "desc": "美国国防部就Anthropic的诉讼提交反驳意见书，坚持维持供应链风险认定，称Anthropic可能试图禁用其技术。此案聚焦AI企业拒绝军方无限制授权后遭受的监管打压，已成为AI行业独立性与政府合同关系的标志性案件。法律界密切关注后续判决走向。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1011
+    },
+    {
+      "date": "2026-03-22",
+      "dateDay": "22",
+      "dateMonth": "2026年3月",
       "cat": "model",
       "catLabel": "🧠 模型突破",
       "catClass": "cat-model",
@@ -138,6 +153,36 @@
       "impact": "",
       "impactClass": "",
       "id": 977
+    },
+    {
+      "date": "2026-03-21",
+      "dateDay": "21",
+      "dateMonth": "2026年3月",
+      "cat": "industry",
+      "catLabel": "💼 产业动态",
+      "catClass": "cat-industry",
+      "dotColor": "orange",
+      "importance": "🟠高",
+      "title": "AI点餐Agent进入消费者实测",
+      "desc": "多家媒体报道AI点餐Agent进入消费者实测阶段，用户反映完成一次外卖点单耗时约九分钟，体验未达预期但技术感仍强烈。此类终端消费场景的AI Agent落地案例标志着自主代理技术从B端工具向C端日常生活渗透提速，引发行业对任务效率与用户体验权衡的广泛讨论。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1012
+    },
+    {
+      "date": "2026-03-21",
+      "dateDay": "21",
+      "dateMonth": "2026年3月",
+      "cat": "safety",
+      "catLabel": "⚠️ 安全伦理",
+      "catClass": "cat-safety",
+      "dotColor": "red",
+      "importance": "🟠高",
+      "title": "教皇AI顾问批评硅谷技术神学化",
+      "desc": "梵蒂冈教皇AI顾问Paolo Benanti发表长文，批评彼得·蒂尔等硅谷人物将AI与末世论神学捆绑，称其言论构成异端，并指硅谷正发动永久政变。此事件折射出AI技术的意识形态化趋势及与宗教伦理机构的深层张力，引发全球广泛关注并推动AI伦理讨论进入更宏观的文明视野。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1013
     },
     {
       "date": "2026-03-21",
@@ -753,6 +798,21 @@
       "impact": "",
       "impactClass": "",
       "id": 926
+    },
+    {
+      "date": "2026-03-20",
+      "dateDay": "20",
+      "dateMonth": "2026年3月",
+      "cat": "model",
+      "catLabel": "🧠 模型突破",
+      "catClass": "cat-model",
+      "dotColor": "blue",
+      "importance": "🟠高",
+      "title": "Signal创始人与Meta合作加密AI",
+      "desc": "Signal创始人Moxie Marlinspike宣布其加密AI聊天机器人Confer正与Meta合作，将Confer隐私加密技术融入Meta AI底层架构。这是AI隐私计算领域一次标志性跨界合作，或将推动主流AI产品实现端到端加密对话，在AI普及与隐私保护之间探索新的平衡路径。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1014
     },
     {
       "date": "2026-03-20",
@@ -1488,6 +1548,21 @@
       "impact": "",
       "impactClass": "",
       "id": 882
+    },
+    {
+      "date": "2026-03-19",
+      "dateDay": "19",
+      "dateMonth": "2026年3月",
+      "cat": "safety",
+      "catLabel": "⚠️ 安全伦理",
+      "catClass": "cat-safety",
+      "dotColor": "red",
+      "importance": "🟠高",
+      "title": "AI复刻Val Kilmer获授权出演新片",
+      "desc": "好莱坞影星Val Kilmer去世后，其遗产管理方已授权在即将上映电影中使用AI生成的Kilmer形象正式出演角色。这是AI复刻已故演员并获家属授权在院线电影使用的典型案例，引发演员肖像权保护、数字人伦理与版权归属的广泛争议，或将推动相关立法提速。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1015
     },
     {
       "date": "2026-03-19",
