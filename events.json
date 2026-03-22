@@ -5,6 +5,51 @@
   },
   "events": [
     {
+      "date": "2026-03-23",
+      "dateDay": "23",
+      "dateMonth": "2026年3月",
+      "cat": "model",
+      "catLabel": "🧠 模型突破",
+      "catClass": "cat-model",
+      "dotColor": "blue",
+      "importance": "🔴极高",
+      "title": "OpenAI发布GPT-5.4 Turbo Ultra：工具调用与推理全面跃升",
+      "desc": "OpenAI深夜发布GPT-5.4 Turbo Ultra，延续GPT-5.4系列迭代步伐。新版本在工具调用稳定性上提升明显，多步骤Agent任务成功率较前版提高约40%，同时支持更长的上下文窗口与更低延迟推理。发布后API访问量在一小时内刷新历史峰值，引发开发者社区广泛关注。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1028
+    },
+    {
+      "date": "2026-03-22",
+      "dateDay": "22",
+      "dateMonth": "2026年3月",
+      "cat": "china",
+      "catLabel": "🌏 中国AI",
+      "catClass": "cat-china",
+      "dotColor": "green",
+      "importance": "🟠高",
+      "title": "工信部启动AI大模型能力分级认证一百零三期申报",
+      "desc": "工信部正式启动第一百零三期AI大模型能力分级认证申报工作，本期重点新增多模态Agent协作场景的评测维度，要求参评模型在真实工业场景中完成跨工具链复合任务。此举是工信部持续推进AI大模型分级认证体系建设的最新进展，已有超过200家机构完成前序批次认证。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1029
+    },
+    {
+      "date": "2026-03-22",
+      "dateDay": "22",
+      "dateMonth": "2026年3月",
+      "cat": "policy",
+      "catLabel": "🏛️ 政策法规",
+      "catClass": "cat-policy",
+      "dotColor": "purple",
+      "importance": "🟠高",
+      "title": "欧盟AI办公室发布行为审计强制指南第八十三期更新",
+      "desc": "欧盟AI办公室发布通用AI模型行为审计强制指南第八十三期更新文件，进一步细化对大型语言模型在自主决策场景下的行为记录与溯源要求，要求模型提供商在模型输出涉及高风险决策时保留不少于90天的完整推理日志，为欧盟AI法案合规执行提供最新操作规范。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1030
+    },
+    {
       "date": "2026-03-22",
       "dateDay": "22",
       "dateMonth": "2026年3月",
@@ -243,6 +288,21 @@
       "impact": "",
       "impactClass": "",
       "id": 977
+    },
+    {
+      "date": "2026-03-21",
+      "dateDay": "21",
+      "dateMonth": "2026年3月",
+      "cat": "industry",
+      "catLabel": "💼 产业动态",
+      "catClass": "cat-industry",
+      "dotColor": "orange",
+      "importance": "🟠高",
+      "title": "英伟达宣布与越南政府签署AI算力战略合作协议",
+      "desc": "英伟达与越南政府正式签署AI算力战略合作协议，宣布将在河内与胡志明市各建设一座大型AI数据中心，合计投资规模超过50亿美元。越南政府表示此举是其「数字经济2030」国家战略的重要组成部分，旨在将越南打造为东南亚AI产业的核心枢纽之一，与英伟达此前在泰国的布局形成区域互补。",
+      "impact": "",
+      "impactClass": "",
+      "id": 1031
     },
     {
       "date": "2026-03-21",
